@@ -12,12 +12,8 @@ import {
   IconCalendarEvent,
   IconCertificate,
   IconShieldLock,
-  IconFileText,
   IconBrandGithub,
   IconSparkles,
-  IconReceipt,
-  IconSearch,
-  IconBrandWhatsapp,
 } from "@tabler/icons-react";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 import SpatialTiltCard from "@/components/ui/SpatialTiltCard";
@@ -162,7 +158,11 @@ export default function FeaturedProjectSection() {
                       <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
                       <div className="w-3 h-3 rounded-full bg-green-500/80" />
                       <span className="font-mono text-xs text-zinc-400 ml-2 hidden sm:inline">
-                        nyoclean.vercel.app
+                        {nyoCleanMode === "screenshot"
+                          ? "nyoclean.vercel.app"
+                          : nyoCleanMode === "tracking"
+                          ? "nyoclean.vercel.app/track/CS-2609-001"
+                          : "nyoclean.vercel.app/dashboard/pos"}
                       </span>
                     </div>
 
@@ -196,18 +196,18 @@ export default function FeaturedProjectSection() {
                             : "text-zinc-400 hover:text-white"
                         }`}
                       >
-                        Kasir POS &amp; WA
+                        Kasir POS
                       </button>
                     </div>
                   </div>
 
-                  {/* Window Body */}
+                  {/* Window Body: Real Screenshots */}
                   <div className="relative aspect-16/10 w-full bg-slate-900 overflow-hidden flex items-center justify-center">
                     {nyoCleanMode === "screenshot" ? (
                       <div className="relative w-full h-full group">
                         <Image
                           src={nyocleanProject.image || "/nyoclean-thumb.jpg"}
-                          alt="Tangkapan Layar Asli NyoClean - Shoe Care SaaS & POS"
+                          alt="Tangkapan Layar Asli NyoClean - Beranda & Pencarian Lacak"
                           fill
                           sizes="(max-width: 1024px) 100vw, 55vw"
                           className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.01]"
@@ -215,107 +215,52 @@ export default function FeaturedProjectSection() {
                         />
                       </div>
                     ) : nyoCleanMode === "tracking" ? (
-                      <div className="p-6 w-full h-full flex flex-col justify-between bg-gradient-to-b from-[#09111c] to-[#070b12] font-sans text-xs">
-                        <div>
-                          <div className="flex items-center justify-between mb-3">
-                            <div className="font-bold text-white text-sm flex items-center gap-1.5">
-                              <IconSearch size={16} className="text-blue-400" />
-                              Portal Pelacakan Pesanan Live (/track)
-                            </div>
-                            <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold">
-                              Bebas Login Pelanggan
-                            </span>
-                          </div>
-                          
-                          {/* Search preview */}
-                          <div className="p-3 rounded-xl bg-white/[0.03] border border-white/10 mb-3 flex items-center justify-between">
-                            <div className="font-mono text-zinc-300 text-xs">
-                              Nota: <span className="text-blue-400 font-bold">CS-2609-001</span> • Rian Pratama (0812-8899-2341)
-                            </div>
-                            <span className="text-[10px] font-mono text-blue-300 bg-blue-500/20 px-2 py-0.5 rounded">
-                              Nike Air Jordan 1 Low
-                            </span>
-                          </div>
-
-                          {/* Progress steps */}
-                          <div className="grid grid-cols-4 gap-2 text-center my-3 font-mono text-[10px]">
-                            <div className="p-2 rounded-lg bg-blue-500/20 border border-blue-500/40 text-blue-300 font-bold">
-                              ✓ Diterima
-                            </div>
-                            <div className="p-2 rounded-lg bg-blue-500/20 border border-blue-500/40 text-blue-300 font-bold">
-                              ✓ Pencucian
-                            </div>
-                            <div className="p-2 rounded-lg bg-blue-500/20 border border-blue-500/40 text-blue-300 font-bold">
-                              ✓ Detailing
-                            </div>
-                            <div className="p-2 rounded-lg bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 font-bold animate-pulse">
-                              ★ Siap Diambil
-                            </div>
-                          </div>
-
-                          <p className="text-zinc-400 text-[11px] leading-relaxed">
-                            Treatment: <strong className="text-white">Deep Clean + Unyellowing Sol</strong>. Dilengkapi dokumentasi foto kondisi sepatu sebelum pengerjaan dan sesudah pengerjaan.
-                          </p>
-                        </div>
-
-                        <div className="p-2.5 rounded-lg bg-black/50 border border-white/5 text-[11px] text-zinc-300 flex items-center justify-between font-mono">
-                          <span>Estimasi Selesai:</span>
-                          <span className="text-emerald-400 font-bold">Hari Ini, 17:00 WIB (Selesai Tepat Waktu)</span>
-                        </div>
+                      <div className="relative w-full h-full group">
+                        <Image
+                          src="/nyoclean-track-thumb.jpg"
+                          alt="Tangkapan Layar Asli NyoClean - Live Tracking Pesanan Pelanggan"
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 55vw"
+                          className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.01]"
+                        />
                       </div>
                     ) : (
-                      <div className="p-6 w-full h-full flex flex-col justify-between bg-gradient-to-b from-[#09111c] to-[#070b12] font-sans text-xs">
-                        <div className="space-y-2">
-                          <div className="font-bold text-white text-sm mb-2 flex items-center justify-between">
-                            <span className="flex items-center gap-1.5">
-                              <IconReceipt size={16} className="text-blue-400" />
-                              Kasir POS &amp; Thermal Receipt Ready
-                            </span>
-                            <span className="font-mono text-[10px] text-amber-400 bg-amber-950/40 border border-amber-500/20 px-2 py-0.5 rounded">
-                              Ukuran 58mm / 80mm
-                            </span>
-                          </div>
-
-                          <div className="p-3 rounded-lg bg-white/[0.03] border border-white/5 space-y-1.5 font-mono text-xs">
-                            <div className="flex justify-between text-zinc-200">
-                              <span>1x Deep Clean (Bahan Canvas/Leather)</span>
-                              <span className="text-white font-bold">Rp 45.000</span>
-                            </div>
-                            <div className="flex justify-between text-zinc-200">
-                              <span>1x Unyellowing Midsole Formula</span>
-                              <span className="text-white font-bold">Rp 30.000</span>
-                            </div>
-                            <div className="border-t border-white/10 pt-1.5 flex justify-between text-sm font-bold text-blue-400">
-                              <span>Total Tagihan Kasir:</span>
-                              <span className="text-emerald-400">Rp 75.000 (Lunas / Tunai)</span>
-                            </div>
-                          </div>
-
-                          <div className="p-2.5 rounded-lg bg-emerald-950/30 border border-emerald-500/30 flex items-center gap-2 text-emerald-300 text-[11px]">
-                            <IconBrandWhatsapp size={16} className="shrink-0 text-emerald-400" />
-                            <span>100% Bebas Biaya Gateway: Direct click-to-chat kirim nota &amp; live tracking ke WhatsApp pelanggan</span>
-                          </div>
-                        </div>
-
-                        <div className="text-[11px] font-mono text-zinc-400 border-t border-white/5 pt-2 flex items-center justify-between">
-                          <span>Arsitektur: Dual-Mode (Interactive Demo + PostgreSQL)</span>
-                          <span className="text-blue-400 font-semibold">1-Click Uji Coba</span>
-                        </div>
+                      <div className="relative w-full h-full group">
+                        <Image
+                          src="/nyoclean-pos-thumb.jpg"
+                          alt="Tangkapan Layar Asli NyoClean - Kasir POS Workshop Sepatu"
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 55vw"
+                          className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.01]"
+                        />
                       </div>
                     )}
                   </div>
 
                   {/* Window Bottom Info Bar */}
                   <div className="px-4 py-2.5 bg-[#0b1017] border-t border-white/8 flex items-center justify-between font-mono text-[11px] text-zinc-400">
-                    <span className="flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
-                      Tangkapan Layar Nyata: nyoclean.vercel.app
+                    <span className="flex items-center gap-1.5 truncate mr-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
+                      <span className="truncate">
+                        Tangkapan Layar Nyata:{" "}
+                        {nyoCleanMode === "screenshot"
+                          ? "nyoclean.vercel.app"
+                          : nyoCleanMode === "tracking"
+                          ? "nyoclean.vercel.app/track/CS-2609-001"
+                          : "nyoclean.vercel.app/dashboard/pos"}
+                      </span>
                     </span>
                     <a
-                      href={nyocleanProject.demoUrl}
+                      href={
+                        nyoCleanMode === "screenshot"
+                          ? nyocleanProject.demoUrl
+                          : nyoCleanMode === "tracking"
+                          ? `${nyocleanProject.demoUrl?.replace(/\/$/, "")}/track/CS-2609-001`
+                          : `${nyocleanProject.demoUrl?.replace(/\/$/, "")}/dashboard/pos`
+                      }
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center gap-1 font-sans"
+                      className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center gap-1 font-sans shrink-0"
                     >
                       Buka Web Asli <IconArrowUpRight size={13} />
                     </a>
@@ -433,7 +378,11 @@ export default function FeaturedProjectSection() {
                       <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
                       <div className="w-3 h-3 rounded-full bg-green-500/80" />
                       <span className="font-mono text-xs text-zinc-400 ml-2 hidden sm:inline">
-                        nyopharma.vercel.app
+                        {nyoMode === "screenshot"
+                          ? "nyopharma.vercel.app"
+                          : nyoMode === "resep"
+                          ? "nyopharma.vercel.app/#resep"
+                          : "nyopharma.vercel.app/#katalog"}
                       </span>
                     </div>
 
@@ -472,13 +421,13 @@ export default function FeaturedProjectSection() {
                     </div>
                   </div>
 
-                  {/* Window Body: Either Real Screenshot or Interactive Simulation */}
+                  {/* Window Body: Real Screenshots */}
                   <div className="relative aspect-16/10 w-full bg-slate-900 overflow-hidden flex items-center justify-center">
                     {nyoMode === "screenshot" ? (
                       <div className="relative w-full h-full group">
                         <Image
                           src={nyopharmaProject.image || "/nyopharma-thumb.jpg"}
-                          alt="Tangkapan Layar Nyopharma Apotek Digital"
+                          alt="Tangkapan Layar Asli Nyopharma - Beranda Apotek Digital"
                           fill
                           sizes="(max-width: 1024px) 100vw, 55vw"
                           className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.01]"
@@ -486,69 +435,52 @@ export default function FeaturedProjectSection() {
                         />
                       </div>
                     ) : nyoMode === "resep" ? (
-                      <div className="p-6 w-full h-full flex flex-col justify-between bg-gradient-to-b from-[#0c1417] to-[#080d0f] font-sans text-xs">
-                        <div>
-                          <div className="font-bold text-white text-sm flex items-center gap-1.5 mb-1">
-                            <IconFileText size={16} className="text-teal-400" />
-                            Alur Tebus Resep Digital Nyopharma
-                          </div>
-                          <p className="text-zinc-400 text-xs mb-4">
-                            Pasien mengunggah foto resep dokter, apoteker memverifikasi dosis dan ketersediaan dalam 5-10 menit.
-                          </p>
-                          <div className="p-4 rounded-xl bg-white/[0.03] border border-dashed border-teal-500/40 text-center space-y-1">
-                            <div className="text-teal-300 font-semibold text-xs">
-                              Foto Resep Terunggah: resep_pasien_090926.jpg
-                            </div>
-                            <div className="text-zinc-400 text-[11px]">
-                              Status: Terverifikasi oleh APJ apt. Sarah Ramadhani, S.Farm
-                            </div>
-                          </div>
-                        </div>
-                        <div className="p-3 rounded-lg bg-black/50 border border-white/5 text-[11px] text-zinc-300 flex items-center justify-between font-mono">
-                          <span>Distribusi Bersegel:</span>
-                          <span className="text-teal-400 font-bold">Standar Mutu CDOB 22°C</span>
-                        </div>
+                      <div className="relative w-full h-full group">
+                        <Image
+                          src="/nyopharma-resep-thumb.jpg"
+                          alt="Tangkapan Layar Asli Nyopharma - Formulir Tebus Resep Dokter Digital"
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 55vw"
+                          className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.01]"
+                        />
                       </div>
                     ) : (
-                      <div className="p-6 w-full h-full flex flex-col justify-between bg-gradient-to-b from-[#0c1417] to-[#080d0f] font-sans text-xs">
-                        <div className="space-y-2">
-                          <div className="font-bold text-white text-sm mb-2">
-                            Katalog Obat Terverifikasi BPOM RI
-                          </div>
-                          <div className="p-2.5 rounded-lg bg-white/[0.03] border border-white/5 flex items-center justify-between">
-                            <div>
-                              <div className="font-semibold text-white">Paracetamol 500mg Kaplet</div>
-                              <div className="text-[10px] text-emerald-400 font-mono">BPOM: DBL9812345604A1</div>
-                            </div>
-                            <span className="font-bold text-teal-400 font-mono">Rp 8.500</span>
-                          </div>
-                          <div className="p-2.5 rounded-lg bg-white/[0.03] border border-white/5 flex items-center justify-between">
-                            <div>
-                              <div className="font-semibold text-white">Amoxicillin 500mg Kapsul</div>
-                              <div className="text-[10px] text-rose-400 font-mono">BPOM: GKL0412345601A1 • Wajib Resep</div>
-                            </div>
-                            <span className="font-bold text-teal-400 font-mono">Rp 22.000</span>
-                          </div>
-                        </div>
-                        <div className="text-[11px] font-mono text-zinc-400 border-t border-white/5 pt-2 flex items-center justify-between">
-                          <span>Total 120+ SKU Farmasi Terdaftar</span>
-                          <span className="text-teal-400">Garansi 100% Asli</span>
-                        </div>
+                      <div className="relative w-full h-full group">
+                        <Image
+                          src="/nyopharma-katalog-thumb.jpg"
+                          alt="Tangkapan Layar Asli Nyopharma - Etalase Katalog Obat Standar BPOM"
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 55vw"
+                          className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.01]"
+                        />
                       </div>
                     )}
                   </div>
 
                   {/* Window Bottom Info Bar */}
                   <div className="px-4 py-2.5 bg-[#0b0f13] border-t border-white/8 flex items-center justify-between font-mono text-[11px] text-zinc-400">
-                    <span className="flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                      Tangkapan Layar Nyata: nyopharma.vercel.app
+                    <span className="flex items-center gap-1.5 truncate mr-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
+                      <span className="truncate">
+                        Tangkapan Layar Nyata:{" "}
+                        {nyoMode === "screenshot"
+                          ? "nyopharma.vercel.app"
+                          : nyoMode === "resep"
+                          ? "nyopharma.vercel.app/#resep"
+                          : "nyopharma.vercel.app/#katalog"}
+                      </span>
                     </span>
                     <a
-                      href={nyopharmaProject.demoUrl}
+                      href={
+                        nyoMode === "screenshot"
+                          ? nyopharmaProject.demoUrl
+                          : nyoMode === "resep"
+                          ? `${nyopharmaProject.demoUrl?.replace(/\/$/, "")}/#resep`
+                          : `${nyopharmaProject.demoUrl?.replace(/\/$/, "")}/#katalog`
+                      }
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-teal-400 hover:text-teal-300 font-medium inline-flex items-center gap-1 font-sans"
+                      className="text-teal-400 hover:text-teal-300 font-medium inline-flex items-center gap-1 font-sans shrink-0"
                     >
                       Buka Web Asli <IconArrowUpRight size={13} />
                     </a>
