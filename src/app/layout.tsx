@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     "Wanyo",
     "Data Analyst",
     "Web Developer",
+    "NyoClean",
     "Nyopharma",
     "CQ System",
     "Next.js",
@@ -30,6 +31,15 @@ export const metadata: Metadata = {
     "SQL",
     "Portfolio Gallery",
   ],
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
 };
 
 export default function RootLayout({
