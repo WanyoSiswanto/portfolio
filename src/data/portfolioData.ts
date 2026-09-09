@@ -39,10 +39,10 @@ export const PORTFOLIO_DATA = {
     location: "Indonesia",
     avatar: "/wanyo-profile.jpg",
     shortBio:
-      "Menganalisis data dan membangun aplikasi web fungsional untuk kebutuhan nyata—mulai dari landing page apotek modern Nyopharma (arsitektur SaaS-ready) hingga sistem monitoring kalibrasi, kualifikasi, validasi & database program (CQ System).",
+      "Menganalisis data dan membangun aplikasi web fungsional untuk kebutuhan nyata—mulai dari SaaS manajemen cuci sepatu NyoClean (POS, live tracking & direct WA), landing page farmasi modern Nyopharma (arsitektur SaaS-ready), hingga sistem monitoring kalibrasi & validasi industri (CQ System).",
     detailedBio: [
-      "Saya mendalami dunia data analytics untuk mengekstrak insight berharga, memodelkan tren bisnis, dan menjaga integritas data.",
-      "Sebagai developer pragmatis (vibe coding), saya mengeksekusi kebutuhan operasional menjadi aplikasi web nyata: mulai dari landing page profesional yang siap diekspansi menjadi SaaS apotek online, hingga sistem web industri untuk otomasi program tahunan kalibrasi, pelacakan realisasi, dan manajemen database validasi.",
+      "Saya mendalami dunia data analytics untuk mengekstrak insight berharga, memodelkan tren bisnis, dan menjaga integritas data operasional.",
+      "Sebagai developer pragmatis (vibe coding), saya mengeksekusi kebutuhan bisnis riil menjadi aplikasi web fungsional: mulai dari platform SaaS manajemen workshop sepatu NyoClean (lengkap dengan POS counter, live tracking, struk thermal, & WhatsApp automation), landing page profesional farmasi Nyopharma (arsitektur SaaS-ready), hingga sistem web industri CQ System untuk otomasi program tahunan kalibrasi, pelacakan realisasi, dan database validasi.",
     ],
     contact: {
       email: "nyouniverseofficial@gmail.com",
@@ -52,6 +52,45 @@ export const PORTFOLIO_DATA = {
   },
 
   projects: [
+    {
+      id: "nyoclean",
+      title: "NyoClean - Shoe Care SaaS & POS",
+      subtitle: "Sistem Manajemen Kasir Workshop & Live Tracking Cuci Sepatu (Arsitektur Dual-Mode)",
+      category: "Web App",
+      featured: true,
+      statusBadge: "Functional SaaS (Live)",
+      image: "/nyoclean-thumb.jpg",
+      description:
+        "Aplikasi SaaS & POS operasional terintegrasi untuk bisnis jasa cuci dan perawatan sepatu profesional (shoe laundry & atelier). Dilengkapi sistem kasir counter cepat, dokumentasi foto inspeksi sebelum dan sesudah pengerjaan (Before/After), cetak struk nota thermal (58mm/80mm), manajemen antrean teknisi via Kanban board, integrasi notifikasi WhatsApp direct click-to-chat 100% tanpa biaya API, serta portal live tracking publik untuk pelanggan melacak status cucian secara transparan.",
+      problemSolved:
+        "Menghilangkan pencatatan nota kertas fisik yang rawan tercecer dan memangkas pertanyaan berulang 'sepatu saya sudah selesai belum?' lewat portal live tracking instan tanpa perlu login. Menjamin transparansi kondisi sepatu pelanggan lewat foto inspeksi visual, serta menyediakan sistem siap uji coba instan via arsitektur Dual-Mode.",
+      metrics: [
+        { label: "Arsitektur Data", value: "Dual-Mode (Demo + DB)" },
+        { label: "Notifikasi WA", value: "100% Gratis (Direct)" },
+        { label: "Pelacakan", value: "Real-time Live Tracking" },
+      ],
+      tags: [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Prisma ORM",
+        "PostgreSQL",
+        "POS System",
+        "Kanban Board",
+        "Live Tracking",
+        "Vercel",
+      ],
+      features: [
+        "Kasir POS Counter Cepat: Input order kilat dengan pilihan treatment bahan (Deep Clean, Leather, Suede, Unyellowing) dan estimasi selesai",
+        "Visual Inspeksi Sepatu: Dokumentasi kondisi foto Sebelum (Before) dan Sesudah (After) pengerjaan untuk transparansi & perlindungan garansi",
+        "Portal Live Tracking Publik (/track): Pelanggan cukup memasukkan No. Nota (CS-...) atau No. WhatsApp untuk memantau status cucian tanpa perlu login",
+        "Struk Thermal & Direct WhatsApp: Cetak nota kasir standar 58mm/80mm serta kirim pesan update status otomatis via WhatsApp tanpa biaya gateway pihak ketiga",
+        "Papan Kanban Teknisi & Proteksi Rute: Monitoring alur workshop (Antrean, Cuci, Kering, Detailing, Siap Diambil) dengan autentikasi proteksi Next.js Middleware",
+      ],
+      demoUrl: "https://nyoclean.vercel.app/",
+      githubUrl: "https://github.com/WanyoSiswanto/Saas-CuciSepatu",
+      accentColor: "#2563EB",
+    },
     {
       id: "nyopharma",
       title: "Nyopharma - Apotek Digital",

@@ -14,19 +14,25 @@ import {
   IconShieldLock,
   IconFileText,
   IconBrandGithub,
+  IconSparkles,
+  IconReceipt,
+  IconSearch,
+  IconBrandWhatsapp,
 } from "@tabler/icons-react";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 import SpatialTiltCard from "@/components/ui/SpatialTiltCard";
 
 export default function FeaturedProjectSection() {
   const { projects } = PORTFOLIO_DATA;
-  const nyopharmaProject = projects.find((p) => p.id === "nyopharma") || projects[0];
-  const cqProject = projects.find((p) => p.id === "cq-compliance") || projects[1];
+  const nyocleanProject = projects.find((p) => p.id === "nyoclean") || projects[0];
+  const nyopharmaProject = projects.find((p) => p.id === "nyopharma") || projects[1];
+  const cqProject = projects.find((p) => p.id === "cq-compliance") || projects[2];
   const secondaryProjects = projects.filter(
-    (p) => p.id !== "nyopharma" && p.id !== "cq-compliance"
+    (p) => p.id !== "nyoclean" && p.id !== "nyopharma" && p.id !== "cq-compliance"
   );
 
   // Tab switchers between Real Screenshot & Module Simulation
+  const [nyoCleanMode, setNyoCleanMode] = useState<"screenshot" | "tracking" | "pos">("screenshot");
   const [nyoMode, setNyoMode] = useState<"screenshot" | "resep" | "katalog" | "apoteker">("screenshot");
   const [cqMode, setCqMode] = useState<"screenshot" | "jadwal" | "realisasi" | "cpob">("screenshot");
 
@@ -49,7 +55,278 @@ export default function FeaturedProjectSection() {
           </p>
         </div>
 
-        {/* FLAGSHIP 1: NYOPHARMA (Real UI Showcase) */}
+        {/* FLAGSHIP 1: NYOCLEAN (SaaS Shoe Care & POS) */}
+        <div className="mb-12">
+          <SpatialTiltCard
+            className="p-6 sm:p-8 md:p-10 border-white/8 hover:border-blue-500/30 bg-[#0e1217] transition-all"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              {/* Left Details */}
+              <div className="lg:col-span-5 flex flex-col justify-between h-full">
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="font-mono text-xs uppercase px-3 py-1 rounded-full bg-blue-500/10 text-blue-300 border border-blue-500/20 font-semibold flex items-center gap-1.5">
+                      <IconSparkles size={14} className="text-blue-400" />
+                      Karya 01 // {nyocleanProject.category} (SaaS)
+                    </span>
+                    <span className="font-mono text-xs text-blue-400 flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+                      {nyocleanProject.statusBadge}
+                    </span>
+                  </div>
+
+                  <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 tracking-tight">
+                    {nyocleanProject.title}
+                  </h3>
+                  <p className="font-mono text-xs sm:text-sm text-blue-400/90 mb-4">
+                    {nyocleanProject.subtitle}
+                  </p>
+                  <p className="text-zinc-300 text-sm leading-relaxed mb-6">
+                    {nyocleanProject.description}
+                  </p>
+
+                  {/* Problem Solved */}
+                  <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 mb-6">
+                    <div className="font-mono text-xs text-zinc-400 mb-1 flex items-center gap-2">
+                      <IconAlertTriangle size={14} className="text-amber-400" />
+                      <span>Masalah yang Dipecahkan:</span>
+                    </div>
+                    <p className="text-xs text-zinc-200 leading-relaxed">
+                      {nyocleanProject.problemSolved}
+                    </p>
+                  </div>
+
+                  {/* Features list */}
+                  <ul className="space-y-2 mb-8">
+                    {nyocleanProject.features.slice(0, 3).map((feature, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5 text-xs text-zinc-300">
+                        <span className="mt-0.5 text-blue-400 shrink-0">
+                          <IconCheck size={15} />
+                        </span>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Metrics & Actions */}
+                <div>
+                  <div className="grid grid-cols-3 gap-2.5 p-3.5 rounded-xl bg-black/50 border border-white/5 mb-6">
+                    {nyocleanProject.metrics.map((m, idx) => (
+                      <div key={idx}>
+                        <div className="font-display text-base sm:text-lg font-bold text-blue-300">
+                          {m.value}
+                        </div>
+                        <div className="font-mono text-[10px] text-zinc-400 truncate">
+                          {m.label}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex flex-wrap items-center gap-3">
+                    <a
+                      href={nyocleanProject.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs sm:text-sm transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] active:scale-95"
+                    >
+                      <span>Kunjungi Web NyoClean</span>
+                      <IconExternalLink size={16} />
+                    </a>
+
+                    {nyocleanProject.githubUrl && (
+                      <a
+                        href={nyocleanProject.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-300 hover:text-white border border-white/10 font-mono text-xs transition-all"
+                        title="Lihat Repository NyoClean"
+                      >
+                        <IconBrandGithub size={15} />
+                        <span>Source Code</span>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Real Thumbnail Screenshot & Interactive Inspector */}
+              <div className="lg:col-span-7 flex flex-col">
+                <div className="rounded-2xl bg-[#090d10] border border-blue-500/30 overflow-hidden shadow-2xl">
+                  {/* Window Titlebar */}
+                  <div className="px-4 py-3 bg-[#0d141f] border-b border-white/10 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                      <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                      <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                      <span className="font-mono text-xs text-zinc-400 ml-2 hidden sm:inline">
+                        nyoclean.vercel.app
+                      </span>
+                    </div>
+
+                    {/* View mode toggle */}
+                    <div className="flex items-center gap-1 bg-black/40 p-1 rounded-lg border border-white/5 font-mono text-[11px]">
+                      <button
+                        onClick={() => setNyoCleanMode("screenshot")}
+                        className={`px-2.5 py-1 rounded transition-all ${
+                          nyoCleanMode === "screenshot"
+                            ? "bg-blue-600 text-white font-semibold shadow-xs"
+                            : "text-zinc-400 hover:text-white"
+                        }`}
+                      >
+                        Tampilan Asli (UI)
+                      </button>
+                      <button
+                        onClick={() => setNyoCleanMode("tracking")}
+                        className={`px-2.5 py-1 rounded transition-all ${
+                          nyoCleanMode === "tracking"
+                            ? "bg-blue-600 text-white font-semibold shadow-xs"
+                            : "text-zinc-400 hover:text-white"
+                        }`}
+                      >
+                        Live Tracking
+                      </button>
+                      <button
+                        onClick={() => setNyoCleanMode("pos")}
+                        className={`px-2.5 py-1 rounded transition-all ${
+                          nyoCleanMode === "pos"
+                            ? "bg-blue-600 text-white font-semibold shadow-xs"
+                            : "text-zinc-400 hover:text-white"
+                        }`}
+                      >
+                        Kasir POS &amp; WA
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Window Body */}
+                  <div className="relative aspect-16/10 w-full bg-slate-900 overflow-hidden flex items-center justify-center">
+                    {nyoCleanMode === "screenshot" ? (
+                      <div className="relative w-full h-full group">
+                        <Image
+                          src={nyocleanProject.image || "/nyoclean-thumb.jpg"}
+                          alt="Tangkapan Layar Asli NyoClean - Shoe Care SaaS & POS"
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 55vw"
+                          className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.01]"
+                          priority
+                        />
+                      </div>
+                    ) : nyoCleanMode === "tracking" ? (
+                      <div className="p-6 w-full h-full flex flex-col justify-between bg-gradient-to-b from-[#09111c] to-[#070b12] font-sans text-xs">
+                        <div>
+                          <div className="flex items-center justify-between mb-3">
+                            <div className="font-bold text-white text-sm flex items-center gap-1.5">
+                              <IconSearch size={16} className="text-blue-400" />
+                              Portal Pelacakan Pesanan Live (/track)
+                            </div>
+                            <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold">
+                              Bebas Login Pelanggan
+                            </span>
+                          </div>
+                          
+                          {/* Search preview */}
+                          <div className="p-3 rounded-xl bg-white/[0.03] border border-white/10 mb-3 flex items-center justify-between">
+                            <div className="font-mono text-zinc-300 text-xs">
+                              Nota: <span className="text-blue-400 font-bold">CS-2609-001</span> • Rian Pratama (0812-8899-2341)
+                            </div>
+                            <span className="text-[10px] font-mono text-blue-300 bg-blue-500/20 px-2 py-0.5 rounded">
+                              Nike Air Jordan 1 Low
+                            </span>
+                          </div>
+
+                          {/* Progress steps */}
+                          <div className="grid grid-cols-4 gap-2 text-center my-3 font-mono text-[10px]">
+                            <div className="p-2 rounded-lg bg-blue-500/20 border border-blue-500/40 text-blue-300 font-bold">
+                              ✓ Diterima
+                            </div>
+                            <div className="p-2 rounded-lg bg-blue-500/20 border border-blue-500/40 text-blue-300 font-bold">
+                              ✓ Pencucian
+                            </div>
+                            <div className="p-2 rounded-lg bg-blue-500/20 border border-blue-500/40 text-blue-300 font-bold">
+                              ✓ Detailing
+                            </div>
+                            <div className="p-2 rounded-lg bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 font-bold animate-pulse">
+                              ★ Siap Diambil
+                            </div>
+                          </div>
+
+                          <p className="text-zinc-400 text-[11px] leading-relaxed">
+                            Treatment: <strong className="text-white">Deep Clean + Unyellowing Sol</strong>. Dilengkapi dokumentasi foto kondisi sepatu sebelum pengerjaan dan sesudah pengerjaan.
+                          </p>
+                        </div>
+
+                        <div className="p-2.5 rounded-lg bg-black/50 border border-white/5 text-[11px] text-zinc-300 flex items-center justify-between font-mono">
+                          <span>Estimasi Selesai:</span>
+                          <span className="text-emerald-400 font-bold">Hari Ini, 17:00 WIB (Selesai Tepat Waktu)</span>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="p-6 w-full h-full flex flex-col justify-between bg-gradient-to-b from-[#09111c] to-[#070b12] font-sans text-xs">
+                        <div className="space-y-2">
+                          <div className="font-bold text-white text-sm mb-2 flex items-center justify-between">
+                            <span className="flex items-center gap-1.5">
+                              <IconReceipt size={16} className="text-blue-400" />
+                              Kasir POS &amp; Thermal Receipt Ready
+                            </span>
+                            <span className="font-mono text-[10px] text-amber-400 bg-amber-950/40 border border-amber-500/20 px-2 py-0.5 rounded">
+                              Ukuran 58mm / 80mm
+                            </span>
+                          </div>
+
+                          <div className="p-3 rounded-lg bg-white/[0.03] border border-white/5 space-y-1.5 font-mono text-xs">
+                            <div className="flex justify-between text-zinc-200">
+                              <span>1x Deep Clean (Bahan Canvas/Leather)</span>
+                              <span className="text-white font-bold">Rp 45.000</span>
+                            </div>
+                            <div className="flex justify-between text-zinc-200">
+                              <span>1x Unyellowing Midsole Formula</span>
+                              <span className="text-white font-bold">Rp 30.000</span>
+                            </div>
+                            <div className="border-t border-white/10 pt-1.5 flex justify-between text-sm font-bold text-blue-400">
+                              <span>Total Tagihan Kasir:</span>
+                              <span className="text-emerald-400">Rp 75.000 (Lunas / Tunai)</span>
+                            </div>
+                          </div>
+
+                          <div className="p-2.5 rounded-lg bg-emerald-950/30 border border-emerald-500/30 flex items-center gap-2 text-emerald-300 text-[11px]">
+                            <IconBrandWhatsapp size={16} className="shrink-0 text-emerald-400" />
+                            <span>100% Bebas Biaya Gateway: Direct click-to-chat kirim nota &amp; live tracking ke WhatsApp pelanggan</span>
+                          </div>
+                        </div>
+
+                        <div className="text-[11px] font-mono text-zinc-400 border-t border-white/5 pt-2 flex items-center justify-between">
+                          <span>Arsitektur: Dual-Mode (Interactive Demo + PostgreSQL)</span>
+                          <span className="text-blue-400 font-semibold">1-Click Uji Coba</span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Window Bottom Info Bar */}
+                  <div className="px-4 py-2.5 bg-[#0b1017] border-t border-white/8 flex items-center justify-between font-mono text-[11px] text-zinc-400">
+                    <span className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                      Tangkapan Layar Nyata: nyoclean.vercel.app
+                    </span>
+                    <a
+                      href={nyocleanProject.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center gap-1 font-sans"
+                    >
+                      Buka Web Asli <IconArrowUpRight size={13} />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </SpatialTiltCard>
+        </div>
+
+        {/* FLAGSHIP 2: NYOPHARMA (Real UI Showcase) */}
         <div className="mb-12">
           <SpatialTiltCard
             className="p-6 sm:p-8 md:p-10 border-white/8 hover:border-teal-500/30 bg-[#0e1217] transition-all"
@@ -61,7 +338,7 @@ export default function FeaturedProjectSection() {
                   <div className="flex items-center gap-3 mb-4">
                     <span className="font-mono text-xs uppercase px-3 py-1 rounded-full bg-teal-500/10 text-teal-300 border border-teal-500/20 font-semibold flex items-center gap-1.5">
                       <IconPill size={14} className="text-teal-400" />
-                      Karya 01 // {nyopharmaProject.category}
+                      Karya 02 // {nyopharmaProject.category}
                     </span>
                     <span className="font-mono text-xs text-emerald-400 flex items-center gap-1">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -294,7 +571,7 @@ export default function FeaturedProjectSection() {
                   <div className="flex items-center gap-3 mb-4">
                     <span className="font-mono text-xs uppercase px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 font-semibold flex items-center gap-1.5">
                       <IconAdjustmentsHorizontal size={14} className="text-cyan-400" />
-                      Karya 02 // {cqProject.category}
+                      Karya 03 // {cqProject.category}
                     </span>
                     <span className="font-mono text-xs text-amber-400 flex items-center gap-1 bg-amber-950/40 border border-amber-500/30 px-2 py-0.5 rounded">
                       <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />

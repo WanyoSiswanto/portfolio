@@ -11,6 +11,7 @@ import {
   IconPill,
   IconAdjustmentsHorizontal,
   IconDatabase,
+  IconSparkles,
 } from "@tabler/icons-react";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 
@@ -82,7 +83,7 @@ export default function HeroSection() {
               <span className="w-2 h-2 rounded-full bg-emerald-400" />
               <div>
                 <div className="text-zinc-500 font-mono text-[10px]">DOMAIN UTAMA</div>
-                <div className="text-zinc-200 font-medium">Health Tech &amp; CPOB/GMP</div>
+                <div className="text-zinc-200 font-medium">SaaS Apps • Health Tech • CQV</div>
               </div>
             </div>
             <div className="flex items-center gap-2.5">
@@ -134,15 +135,6 @@ export default function HeroSection() {
                 <IconBrandGithub size={18} />
               </a>
               <a
-                href={profile.contact.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-lg bg-white/5 hover:bg-white/10 hover:text-cyan-400 transition-colors"
-                title="LinkedIn"
-              >
-                <IconBrandLinkedin size={18} />
-              </a>
-              <a
                 href={`mailto:${profile.contact.email}`}
                 className="p-2 rounded-lg bg-white/5 hover:bg-white/10 hover:text-white transition-colors"
                 title="Email"
@@ -153,9 +145,21 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Minimalist 3-Pillar Quick Summary */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="p-5 rounded-2xl bg-[#0c0f14] border border-white/6 flex items-start gap-3.5">
+        {/* 4-Pillar Quick Summary */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="p-5 rounded-2xl bg-[#0c0f14] border border-blue-500/20 hover:border-blue-500/40 transition-colors flex items-start gap-3.5">
+            <div className="p-2.5 rounded-xl bg-blue-500/10 text-blue-400 shrink-0">
+              <IconSparkles size={20} />
+            </div>
+            <div>
+              <div className="text-white font-semibold text-sm">NyoClean SaaS</div>
+              <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
+                Platform kasir POS workshop sepatu, struk thermal, live tracking &amp; integrasi WhatsApp.
+              </p>
+            </div>
+          </div>
+
+          <div className="p-5 rounded-2xl bg-[#0c0f14] border border-white/6 hover:border-teal-500/30 transition-colors flex items-start gap-3.5">
             <div className="p-2.5 rounded-xl bg-teal-500/10 text-teal-400 shrink-0">
               <IconPill size={20} />
             </div>
@@ -167,7 +171,7 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="p-5 rounded-2xl bg-[#0c0f14] border border-white/6 flex items-start gap-3.5">
+          <div className="p-5 rounded-2xl bg-[#0c0f14] border border-white/6 hover:border-cyan-500/30 transition-colors flex items-start gap-3.5">
             <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 shrink-0">
               <IconAdjustmentsHorizontal size={20} />
             </div>
@@ -179,14 +183,14 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="p-5 rounded-2xl bg-[#0c0f14] border border-white/6 flex items-start gap-3.5">
+          <div className="p-5 rounded-2xl bg-[#0c0f14] border border-white/6 hover:border-emerald-500/30 transition-colors flex items-start gap-3.5">
             <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 shrink-0">
               <IconDatabase size={20} />
             </div>
             <div>
               <div className="text-white font-semibold text-sm">Analisis Data</div>
               <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
-                Eksplorasi tren stok, mitigasi stockout, dan integritas data.
+                Eksplorasi tren stok, mitigasi stockout, dan integritas data operasional bisnis.
               </p>
             </div>
           </div>
