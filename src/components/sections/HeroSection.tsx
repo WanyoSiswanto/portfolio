@@ -25,7 +25,7 @@ export default function HeroSection() {
       {/* Gentle background glow - soft and fresh */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-emerald-500/[0.04] rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-5xl mx-auto px-5 sm:px-8 relative z-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-8 relative z-10">
         {/* Status Pill */}
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/40 border border-emerald-500/20 text-emerald-400 font-mono text-xs mb-8">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -33,7 +33,7 @@ export default function HeroSection() {
         </div>
 
         {/* Main Hero Card: Clean, Proportional Profile & Identity */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-[#0e1217] border border-white/8 shadow-2xl mb-10">
+        <div className="p-5 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl bg-[#0e1217] border border-white/8 shadow-2xl mb-10">
           <div className="flex flex-col md:flex-row items-start md:items-center gap-8 mb-8">
             {/* Real User Photo */}
             <div className="relative shrink-0">
@@ -57,7 +57,7 @@ export default function HeroSection() {
               <div className="text-zinc-400 font-mono text-xs uppercase tracking-wider">
                 Halo, saya
               </div>
-              <h1 className="font-display text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+              <h1 className="font-display text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
                 {profile.name}
               </h1>
               <p className="font-sans text-lg sm:text-xl text-emerald-400 font-medium">
@@ -95,11 +95,11 @@ export default function HeroSection() {
           </div>
 
           {/* Action Buttons & Social Channels */}
-          <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-white/8">
-            <div className="flex items-center gap-3">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-6 border-t border-white/8">
+            <div className="flex flex-wrap items-center gap-3">
               <a
                 href="#projects"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-black hover:bg-zinc-200 font-semibold text-xs sm:text-sm transition-all active:scale-98 shadow-sm"
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-white text-black hover:bg-zinc-200 font-semibold text-xs sm:text-sm transition-all active:scale-98 shadow-sm"
               >
                 <span>Lihat Karya Nyata</span>
                 <IconArrowUpRight size={16} />
@@ -107,14 +107,14 @@ export default function HeroSection() {
 
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium text-xs sm:text-sm transition-all"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium text-xs sm:text-sm transition-all"
               >
                 <span>Hubungi Saya</span>
               </a>
             </div>
 
             {/* Social Icons */}
-            <div className="flex items-center gap-2 text-zinc-400">
+            <div className="flex items-center gap-2 text-zinc-400 self-end sm:self-auto">
               <a
                 href={profile.contact.linkedin}
                 target="_blank"

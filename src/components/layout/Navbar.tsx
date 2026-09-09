@@ -16,9 +16,9 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4 sm:pt-6 transition-all duration-300">
+    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-3 sm:px-4 pt-3 sm:pt-6 transition-all duration-300">
       <nav
-        className={`w-full max-w-5xl flex items-center justify-between px-5 py-3 rounded-full border transition-all duration-300 backdrop-blur-xl ${
+        className={`w-full max-w-5xl flex items-center justify-between px-3.5 sm:px-5 py-2.5 sm:py-3 rounded-full border transition-all duration-300 backdrop-blur-xl ${
           scrolled
             ? "bg-[#0c0e12]/85 border-white/15 shadow-[0_12px_30px_rgba(0,0,0,0.6)]"
             : "bg-[#0c0e12]/60 border-white/8"
@@ -28,12 +28,12 @@ export default function Navbar() {
         {/* Brand / Logo */}
         <a
           href="#top"
-          className="flex items-center gap-2.5 group text-white hover:text-emerald-400 transition-colors"
+          className="flex items-center gap-2 sm:gap-2.5 group text-white hover:text-emerald-400 transition-colors"
         >
-          <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-emerald-500/40 group-hover:bg-emerald-500/10 transition-all">
-            <IconTerminal2 size={16} className="text-emerald-400" />
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-emerald-500/40 group-hover:bg-emerald-500/10 transition-all">
+            <IconTerminal2 size={15} className="text-emerald-400" />
           </div>
-          <span className="font-mono text-sm tracking-wider font-semibold uppercase">
+          <span className="font-mono text-xs sm:text-sm tracking-wider font-semibold uppercase">
             Wanyo Siswanto<span className="text-emerald-400">.</span>
           </span>
         </a>
