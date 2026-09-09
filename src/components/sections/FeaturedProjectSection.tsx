@@ -211,7 +211,6 @@ export default function FeaturedProjectSection() {
                           fill
                           sizes="(max-width: 1024px) 100vw, 55vw"
                           className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.01]"
-                          priority
                         />
                       </div>
                     ) : nyoCleanMode === "tracking" ? (
@@ -431,7 +430,6 @@ export default function FeaturedProjectSection() {
                           fill
                           sizes="(max-width: 1024px) 100vw, 55vw"
                           className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.01]"
-                          priority
                         />
                       </div>
                     ) : nyoMode === "resep" ? (
@@ -634,7 +632,6 @@ export default function FeaturedProjectSection() {
                           fill
                           sizes="(max-width: 1024px) 100vw, 55vw"
                           className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.01]"
-                          priority
                         />
                       </div>
                     ) : cqMode === "jadwal" ? (

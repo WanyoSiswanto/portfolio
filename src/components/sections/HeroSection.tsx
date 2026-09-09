@@ -23,8 +23,8 @@ export default function HeroSection() {
       id="top"
       className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-[#090b0e]"
     >
-      {/* Gentle background glow - soft and fresh */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-emerald-500/[0.04] rounded-full blur-[120px] pointer-events-none" />
+      {/* Gentle background glow - mobile GPU optimized */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-[radial-gradient(ellipse_at_center,_rgba(16,185,129,0.06)_0%,_transparent_75%)] pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-8 relative z-10">
         {/* Status Pill */}
