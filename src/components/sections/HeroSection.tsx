@@ -26,7 +26,7 @@ export default function HeroSection() {
           fill
           priority
           quality={95}
-          className="object-cover object-[center_28%] sm:object-[center_24%] md:object-[center_22%]"
+          className="object-cover object-[center_30%] sm:object-[center_26%] md:object-[center_24%]"
         />
 
         {/* Vignette halus atas untuk keterbacaan navbar */}
@@ -58,165 +58,161 @@ export default function HeroSection() {
           <span>nyouniverse</span>
         </a>
 
-          {/* Desktop Nav Links, Language Toggle & Pill Button */}
-          <div className="hidden md:flex items-center gap-7 lg:gap-10">
-            <nav className="flex items-center gap-7 lg:gap-9 text-sm lg:text-[15px] font-medium text-white/85">
-              <a href="#top" className="hover:text-white transition-colors">
-                {t.nav.home[language]}
-              </a>
-              <a href="#about" className="hover:text-white transition-colors">
-                {t.nav.about[language]}
-              </a>
-              <a href="#projects" className="hover:text-white transition-colors">
-                {t.nav.projects[language]}
-              </a>
-            </nav>
+        {/* Desktop Nav Links, Language Toggle & Pill Button */}
+        <div className="hidden md:flex items-center gap-7 lg:gap-10">
+          <nav className="flex items-center gap-7 lg:gap-9 text-sm lg:text-[15px] font-medium text-white/85">
+            <a href="#top" className="hover:text-white transition-colors">
+              {t.nav.home[language]}
+            </a>
+            <a href="#about" className="hover:text-white transition-colors">
+              {t.nav.about[language]}
+            </a>
+            <a href="#projects" className="hover:text-white transition-colors">
+              {t.nav.projects[language]}
+            </a>
+          </nav>
 
-            {/* Bilingual Language Switcher Toggle */}
-            <div className="flex items-center p-0.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-xs font-semibold">
-              <button
-                type="button"
-                onClick={() => setLanguage("id")}
-                aria-label="Pilih Bahasa Indonesia"
-                className={`px-2.5 py-1 rounded-full transition-all cursor-pointer ${
-                  language === "id"
-                    ? "bg-[#FF5E1E] text-white shadow-sm"
-                    : "text-white/60 hover:text-white"
+          {/* Bilingual Language Switcher Toggle */}
+          <div className="flex items-center p-0.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-xs font-semibold">
+            <button
+              type="button"
+              onClick={() => setLanguage("id")}
+              aria-label="Pilih Bahasa Indonesia"
+              className={`px-2.5 py-1 rounded-full transition-all cursor-pointer ${language === "id"
+                  ? "bg-[#FF5E1E] text-white shadow-sm"
+                  : "text-white/60 hover:text-white"
                 }`}
-              >
-                ID
-              </button>
-              <button
-                type="button"
-                onClick={() => setLanguage("en")}
-                aria-label="Select English Language"
-                className={`px-2.5 py-1 rounded-full transition-all cursor-pointer ${
-                  language === "en"
-                    ? "bg-[#FF5E1E] text-white shadow-sm"
-                    : "text-white/60 hover:text-white"
+            >
+              ID
+            </button>
+            <button
+              type="button"
+              onClick={() => setLanguage("en")}
+              aria-label="Select English Language"
+              className={`px-2.5 py-1 rounded-full transition-all cursor-pointer ${language === "en"
+                  ? "bg-[#FF5E1E] text-white shadow-sm"
+                  : "text-white/60 hover:text-white"
                 }`}
-              >
-                EN
-              </button>
-            </div>
+            >
+              EN
+            </button>
+          </div>
 
-            {/* Pill CTA: Get in touch dengan arrow button oranye */}
+          {/* Pill CTA: Get in touch dengan arrow button oranye */}
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-3 pl-5 pr-2 py-2 rounded-full bg-white text-slate-900 hover:bg-slate-50 font-semibold text-xs sm:text-sm tracking-tight transition-all shadow-md active:scale-95 group"
+          >
+            <span>{t.nav.getInTouch[language]}</span>
+            <span className="w-7 h-7 rounded-full bg-[#FF5E1E] flex items-center justify-center text-white transition-transform duration-200 group-hover:scale-105 group-hover:translate-x-0.5 shadow-sm">
+              <IconArrowRight size={15} stroke={2.5} />
+            </span>
+          </a>
+        </div>
+
+        {/* Mobile Right: Language Switcher & Hamburger */}
+        <div className="md:hidden flex items-center gap-2.5">
+          <div className="flex items-center p-0.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-[11px] font-semibold">
+            <button
+              type="button"
+              onClick={() => setLanguage("id")}
+              className={`px-2 py-0.5 rounded-full transition-all ${language === "id" ? "bg-[#FF5E1E] text-white" : "text-white/60"
+                }`}
+            >
+              ID
+            </button>
+            <button
+              type="button"
+              onClick={() => setLanguage("en")}
+              className={`px-2 py-0.5 rounded-full transition-all ${language === "en" ? "bg-[#FF5E1E] text-white" : "text-white/60"
+                }`}
+            >
+              EN
+            </button>
+          </div>
+
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="text-white p-2 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 cursor-pointer"
+            aria-label="Toggle Menu"
+          >
+            {mobileMenuOpen ? <IconX size={20} /> : <IconMenu2 size={20} />}
+          </button>
+        </div>
+      </header>
+
+      {/* Mobile Dropdown Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden relative z-30 mx-6 mt-4 p-5 rounded-3xl bg-[#061924]/95 backdrop-blur-xl border border-white/15 shadow-2xl flex flex-col gap-4 text-sm font-medium animate-in fade-in zoom-in-95 duration-200">
+          <a
+            href="#top"
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-white/90 hover:text-white py-1"
+          >
+            {t.nav.home[language]}
+          </a>
+          <a
+            href="#about"
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-white/90 hover:text-white py-1"
+          >
+            {t.nav.about[language]}
+          </a>
+          <a
+            href="#projects"
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-white/90 hover:text-white py-1"
+          >
+            {t.nav.projects[language]}
+          </a>
+          <a
+            href="#skills"
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-white/90 hover:text-white py-1"
+          >
+            {t.nav.skills[language]}
+          </a>
+          <div className="pt-3 border-t border-white/10">
             <a
               href="#contact"
-              className="inline-flex items-center gap-3 pl-5 pr-2 py-2 rounded-full bg-white text-slate-900 hover:bg-slate-50 font-semibold text-xs sm:text-sm tracking-tight transition-all shadow-md active:scale-95 group"
+              onClick={() => setMobileMenuOpen(false)}
+              className="inline-flex items-center justify-between w-full pl-5 pr-2 py-2 rounded-full bg-white text-slate-950 font-semibold text-xs"
             >
               <span>{t.nav.getInTouch[language]}</span>
-              <span className="w-7 h-7 rounded-full bg-[#FF5E1E] flex items-center justify-center text-white transition-transform duration-200 group-hover:scale-105 group-hover:translate-x-0.5 shadow-sm">
-                <IconArrowRight size={15} stroke={2.5} />
+              <span className="w-6 h-6 rounded-full bg-[#FF5E1E] flex items-center justify-center text-white">
+                <IconArrowRight size={13} stroke={2.5} />
               </span>
             </a>
           </div>
-
-          {/* Mobile Right: Language Switcher & Hamburger */}
-          <div className="md:hidden flex items-center gap-2.5">
-            <div className="flex items-center p-0.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-[11px] font-semibold">
-              <button
-                type="button"
-                onClick={() => setLanguage("id")}
-                className={`px-2 py-0.5 rounded-full transition-all ${
-                  language === "id" ? "bg-[#FF5E1E] text-white" : "text-white/60"
-                }`}
-              >
-                ID
-              </button>
-              <button
-                type="button"
-                onClick={() => setLanguage("en")}
-                className={`px-2 py-0.5 rounded-full transition-all ${
-                  language === "en" ? "bg-[#FF5E1E] text-white" : "text-white/60"
-                }`}
-              >
-                EN
-              </button>
-            </div>
-
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-white p-2 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 cursor-pointer"
-              aria-label="Toggle Menu"
-            >
-              {mobileMenuOpen ? <IconX size={20} /> : <IconMenu2 size={20} />}
-            </button>
-          </div>
-        </header>
-
-        {/* Mobile Dropdown Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden relative z-30 mx-6 mt-4 p-5 rounded-3xl bg-[#061924]/95 backdrop-blur-xl border border-white/15 shadow-2xl flex flex-col gap-4 text-sm font-medium animate-in fade-in zoom-in-95 duration-200">
-            <a
-              href="#top"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-white/90 hover:text-white py-1"
-            >
-              {t.nav.home[language]}
-            </a>
-            <a
-              href="#about"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-white/90 hover:text-white py-1"
-            >
-              {t.nav.about[language]}
-            </a>
-            <a
-              href="#projects"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-white/90 hover:text-white py-1"
-            >
-              {t.nav.projects[language]}
-            </a>
-            <a
-              href="#skills"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-white/90 hover:text-white py-1"
-            >
-              {t.nav.skills[language]}
-            </a>
-            <div className="pt-3 border-t border-white/10">
-              <a
-                href="#contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className="inline-flex items-center justify-between w-full pl-5 pr-2 py-2 rounded-full bg-white text-slate-950 font-semibold text-xs"
-              >
-                <span>{t.nav.getInTouch[language]}</span>
-                <span className="w-6 h-6 rounded-full bg-[#FF5E1E] flex items-center justify-center text-white">
-                  <IconArrowRight size={13} stroke={2.5} />
-                </span>
-              </a>
-            </div>
-          </div>
-        )}
-
-        {/* Spacer fleksibel agar konten bawah selalu berada di bagian bawah */}
-        <div className="flex-1" />
-
-        {/* Bottom Row: Penempatan persis gambar referensi */}
-        <div className="relative z-20 w-full px-6 sm:px-8 md:px-10 lg:px-12 pb-8 sm:pb-12 md:pb-14 lg:pb-16 flex flex-col md:flex-row md:items-end justify-between gap-8 sm:gap-10">
-          {/* Kolom Kiri: Label oranye Data Analyst & Web Developer + Judul masif About */}
-          <div className="space-y-1 shrink-0">
-            <div className="text-[#FF5E1E] font-semibold text-sm sm:text-base lg:text-lg tracking-wide">
-              {t.hero.roleTag[language]}
-            </div>
-            <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-[104px] font-extrabold text-white tracking-[-0.04em] leading-none">
-              {t.hero.aboutHeading[language]}
-            </h1>
-          </div>
-
-          {/* Kolom Kanan: Sosok di Balik Solusi Digital / The Mind Behind Digital Solutions */}
-          <div className="max-w-xs sm:max-w-sm lg:max-w-md space-y-1.5 md:pb-3 text-left">
-            <h2 className="text-white font-bold text-lg sm:text-xl lg:text-2xl tracking-tight">
-              {t.hero.personHeading[language]}
-            </h2>
-            <p className="text-white/60 text-xs sm:text-sm lg:text-base leading-relaxed">
-              {t.hero.personSub[language]}
-            </p>
-          </div>
         </div>
-      </section>
+      )}
+
+      {/* Spacer fleksibel agar konten bawah selalu berada di bagian bawah */}
+      <div className="flex-1" />
+
+      {/* Bottom Row: Penempatan persis gambar referensi */}
+      <div className="relative z-20 w-full px-6 sm:px-8 md:px-10 lg:px-12 pb-8 sm:pb-12 md:pb-14 lg:pb-16 flex flex-col md:flex-row md:items-end justify-between gap-8 sm:gap-10">
+        {/* Kolom Kiri: Label oranye Data Analyst & Web Developer + Judul masif About */}
+        <div className="space-y-1 shrink-0">
+          <div className="text-[#FF5E1E] font-semibold text-sm sm:text-base lg:text-lg tracking-wide">
+            {t.hero.roleTag[language]}
+          </div>
+          <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-[104px] font-extrabold text-white tracking-[-0.04em] leading-none">
+            {t.hero.aboutHeading[language]}
+          </h1>
+        </div>
+
+        {/* Kolom Kanan: Sosok di Balik Solusi Digital / The Mind Behind Digital Solutions */}
+        <div className="max-w-xs sm:max-w-sm lg:max-w-md space-y-1.5 md:pb-3 text-left">
+          <h2 className="text-white font-bold text-lg sm:text-xl lg:text-2xl tracking-tight">
+            {t.hero.personHeading[language]}
+          </h2>
+          <p className="text-white/60 text-xs sm:text-sm lg:text-base leading-relaxed">
+            {t.hero.personSub[language]}
+          </p>
+        </div>
+      </div>
+    </section>
   );
 }
 
