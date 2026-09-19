@@ -78,7 +78,7 @@ export const PORTFOLIO_DATA = {
         "POS System",
         "Kanban Board",
         "Live Tracking",
-        "Vercel",
+        "Production Ready",
       ],
       features: [
         "Kasir POS Counter Cepat: Input order kilat dengan pilihan treatment bahan (Deep Clean, Leather, Suede, Unyellowing) dan estimasi selesai",
@@ -116,7 +116,7 @@ export const PORTFOLIO_DATA = {
         "Online Appointment",
         "Tell-Show-Do",
         "Healthcare UI",
-        "Vercel",
+        "Production Ready",
       ],
       features: [
         "Reservasi Janji Temu Online (/appointment): Form interaktif booking jadwal dokter spesialis gigi anak (Sp.KGA) dan pilihan keluhan perawatan",
@@ -252,11 +252,11 @@ export const PORTFOLIO_DATA = {
       ],
     },
     {
-      title: "Web Development & Vibe Coding",
+      title: "Web Development & Engineering",
       badge: "WEB & TOOLS",
       description: "Mengeksekusi ide menjadi aplikasi web nyata, responsif, dan siap melayani pengguna.",
       skills: [
-        { name: "Next.js & React", level: "Proficient", context: "App Router, SSR, Server & Client components, optimasi Vercel" },
+        { name: "Next.js & React", level: "Proficient", context: "App Router, SSR, Server & Client components, optimasi performa & deployment produksi" },
         { name: "TypeScript & JavaScript", level: "Proficient", context: "Pengembangan komponen modular, type-safety, manipulasi DOM" },
         { name: "Tailwind CSS", level: "Advanced", context: "Sistem desain modern, layout responsif, micro-interactions, dark mode" },
         { name: "Three.js / WebGL", level: "Intermediate", context: "Efek 3D interaktif, spatial canvas, mouse inertia" },
@@ -278,13 +278,13 @@ export const PORTFOLIO_DATA = {
     },
     {
       step: "03",
-      title: "Eksekusi Cepat (Vibe Coding)",
-      detail: "Membangun aplikasi web fungsional secara tangkas dengan Next.js / React & Tailwind CSS berfokus pada fitur inti.",
+      title: "Rekayasa & Pengembangan Web",
+      detail: "Membangun aplikasi web fungsional secara tangkas dengan arsitektur modular yang tepat guna sesuai kebutuhan (seperti modern JavaScript, PHP, atau framework terkait).",
     },
     {
       step: "04",
-      title: "Deploy & Evaluasi Lapangan",
-      detail: "Meluncurkan aplikasi ke Vercel, memastikan performa stabil, dan mengevaluasi kemudahan pemakaian.",
+      title: "Pengujian & Deployment Produksi",
+      detail: "Pengujian fungsionalitas secara menyeluruh dengan data riil, optimasi performa, serta deployment terstruktur ke lingkungan produksi.",
     },
   ],
 };

@@ -300,18 +300,18 @@ export const TRANSLATIONS = {
       },
       {
         step: "03",
-        title: { id: "Eksekusi Cepat (Vibe Coding)", en: "Rapid Functional Build" },
+        title: { id: "Rekayasa & Pengembangan Web", en: "Engineering & Web Development" },
         detail: {
-          id: "Membangun antarmuka interaktif dan fungsional dengan Next.js, TypeScript, dan Tailwind CSS tanpa over-engineering.",
-          en: "Building responsive, functional web interfaces using Next.js, TypeScript, and Tailwind CSS without over-engineering.",
+          id: "Membangun aplikasi web dan antarmuka interaktif yang modular, andal, dan efisien menggunakan teknologi yang tepat guna sesuai kebutuhan (seperti modern JavaScript, PHP, atau framework terkait).",
+          en: "Developing modular, reliable, and high-performance web applications and interfaces using appropriate technologies tailored to project needs (such as modern JavaScript, PHP, or relevant frameworks).",
         },
       },
       {
         step: "04",
-        title: { id: "Validasi & Deployment", en: "Verification & Deployment" },
+        title: { id: "Pengujian & Deployment Produksi", en: "Quality Testing & Production Deployment" },
         detail: {
-          id: "Uji coba fungsionalitas dengan data riil, optimasi performa web, dan deployment ke lingkungan produksi (Vercel).",
-          en: "Rigorous testing with realistic datasets, performance profiling, and seamless automated deployment to Vercel.",
+          id: "Pengujian fungsionalitas secara menyeluruh dengan data riil, optimasi performa dan keamanan, serta deployment terstruktur ke lingkungan produksi yang siap pakai.",
+          en: "Comprehensive functional testing with realistic datasets, performance and security optimization, followed by structured deployment to a production environment.",
         },
       },
     ],
