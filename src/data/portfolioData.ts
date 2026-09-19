@@ -260,7 +260,7 @@ export const PORTFOLIO_DATA = {
         { name: "TypeScript & JavaScript", level: "Proficient", context: "Pengembangan komponen modular, type-safety, manipulasi DOM" },
         { name: "Tailwind CSS", level: "Advanced", context: "Sistem desain modern, layout responsif, micro-interactions, dark mode" },
         { name: "Three.js / WebGL", level: "Intermediate", context: "Efek 3D interaktif, spatial canvas, mouse inertia" },
-        { name: "Sistem Kepatuhan (CQV / CPOB)", level: "Specialist", context: "Alur validasi kualifikasi, kalibrasi instrumen, integritas data audit" },
+        { name: "REST APIs & Backend Integration", level: "Proficient", context: "Integrasi endpoint RESTful, komunikasi client-server, penanganan asynchronous data & JSON" },
       ],
     },
   ] as SkillCategory[],
@@ -268,8 +268,8 @@ export const PORTFOLIO_DATA = {
   workflowSteps: [
     {
       step: "01",
-      title: "Riset Masalah & Regulasi",
-      detail: "Mengidentifikasi alur kerja konvensional yang lambat, ketentuan regulasi (seperti CPOB atau BPOM), dan data yang dibutuhkan.",
+      title: "Audit Masalah & Kebutuhan Data",
+      detail: "Mengidentifikasi alur kerja operasional yang lambat, kebutuhan analitik bisnis, dan struktur data yang diperlukan.",
     },
     {
       step: "02",
