@@ -1,79 +1,141 @@
 "use client";
 
 import React from "react";
-import { IconTerminal, IconShieldCheck, IconBolt } from "@tabler/icons-react";
+import {
+  IconSchool,
+  IconCode,
+  IconCheck,
+  IconArrowUpRight,
+  IconChartBar,
+} from "@tabler/icons-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { TRANSLATIONS } from "@/data/translations";
 
 export default function AboutNarrative() {
+  const { language } = useLanguage();
+  const t = TRANSLATIONS.aboutNarrative;
+
   return (
-    <section id="about" className="py-24 sm:py-32 relative z-20">
-      <div className="max-w-6xl mx-auto px-5 sm:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Column: Personal Narrative */}
-          <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 font-mono text-xs text-emerald-400 mb-3 tracking-wider">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-              04 // PRAGMATIC PHILOSOPHY
+    <section id="about" className="py-20 sm:py-28 lg:py-36 bg-white text-[#0F172A]">
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+          {/* Kolom Kiri: Label, Judul Utama & Kartu Kredensial UNIKOM */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="space-y-3">
+              <div className="text-[#FF5E1E] font-semibold text-sm sm:text-base tracking-wide">
+                {t.badge[language]}
+              </div>
+              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0F172A] tracking-[-0.035em] leading-[1.12]">
+                {t.heading[language]}
+              </h2>
             </div>
 
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
-              Dari Analisis Data ke Software yang Langsung Bisa Dipakai.
-            </h2>
+            {/* Kartu Kredensial Akademik UNIKOM (Trust Card) */}
+            <div className="p-5 sm:p-6 rounded-3xl bg-slate-50/90 border border-slate-200/80 shadow-xs space-y-3 hover:border-slate-300 transition-all">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 text-xs font-semibold text-[#FF5E1E] uppercase tracking-wider">
+                  <span className="w-2 h-2 rounded-full bg-[#FF5E1E] animate-pulse" />
+                  <span>{t.eduCard.tag[language]}</span>
+                </div>
+                <span className="p-2 rounded-xl bg-white border border-slate-200 text-[#0F172A] shadow-2xs">
+                  <IconSchool size={20} stroke={2} />
+                </span>
+              </div>
 
-            <div className="space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
-              <p>
-                Seringkali analisis data hanya berhenti pada berkas spreadsheet atau laporan statis. Masalahnya: pengguna di lapangan tetap membutuhkan antarmuka yang nyata untuk berinteraksi, memproses transaksi, dan mengakses layanan.
+              <div>
+                <h3 className="font-display text-lg sm:text-xl font-bold text-[#0F172A] tracking-tight">
+                  {t.eduCard.degree[language]}
+                </h3>
+                <p className="text-slate-800 font-medium text-sm">
+                  {t.eduCard.university[language]}
+                </p>
+              </div>
+
+              <p className="text-slate-600 text-xs sm:text-[13px] leading-relaxed">
+                {t.eduCard.desc[language]}
               </p>
-              <p>
-                Saya memilih pendekatan yang terpadu. Sebagai seorang yang mendalami data analisis, saya memahami kebutuhan informasi dan integritas alur kerja. Lalu, dengan keterampilan web development dan <em>vibe coding</em> yang lincah, saya mengeksekusi aplikasi web mandiri yang hidup—mulai dari landing page modern <strong>Nyopharma</strong> yang modular dan siap berkembang menjadi SaaS apotek online, hingga sistem monitoring kalibrasi &amp; validasi <strong>CQ System</strong> yang menyusun program tahunan otomatis, mencatat realisasi lapangan, dan mengelola database instrumen—yang siap menyelesaikan kebutuhan operasional secara nyata.
-              </p>
-              <p className="text-zinc-400 font-mono text-xs pt-2">
-                {"// Tidak ada overengineering. Fokus pada produk nyata yang fungsional dan berdampak."}
-              </p>
+
+              <div className="pt-2 flex flex-wrap gap-2 text-[11px] font-mono font-medium text-slate-700">
+                <span className="px-2.5 py-1 rounded-full bg-white border border-slate-200">
+                  Web & SaaS
+                </span>
+                <span className="px-2.5 py-1 rounded-full bg-white border border-slate-200">
+                  Android App
+                </span>
+                <span className="px-2.5 py-1 rounded-full bg-white border border-slate-200">
+                  Data Science
+                </span>
+              </div>
+            </div>
+
+            {/* Call to Action Cepat untuk Klien */}
+            <div className="pt-2">
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-[#0F172A] text-white hover:bg-slate-800 font-medium text-xs sm:text-sm tracking-tight transition-all shadow-md active:scale-98 group"
+              >
+                <span>{language === "id" ? "Konsultasikan Kebutuhan Anda" : "Consult Your Project"}</span>
+                <IconArrowUpRight
+                  size={16}
+                  className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#FF5E1E]"
+                />
+              </a>
             </div>
           </div>
 
-          {/* Right Column: 3 Concrete Value Pillars */}
-          <div className="lg:col-span-5 space-y-4">
-            <div className="p-6 rounded-2xl bg-[#0f1217] border border-white/8">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
-                  <IconShieldCheck size={20} />
-                </div>
-                <h3 className="font-display font-semibold text-white text-base">
-                  Integritas Data Terjamin
-                </h3>
-              </div>
-              <p className="text-xs text-zinc-400 leading-relaxed">
-                Menyusun filter, aturan tipe data, dan pengecekan regex ketat sebelum data mentah mengotori database produksi.
-              </p>
+          {/* Kolom Kanan: Narasi Editorial & Pilar Nilai Tambah Klien */}
+          <div className="lg:col-span-7 space-y-6 text-slate-600 text-sm sm:text-[15px] leading-relaxed">
+            <h3 className="font-display text-xl sm:text-2xl font-bold text-[#0F172A] tracking-tight leading-snug">
+              {t.subheading[language]}
+            </h3>
+
+            {/* 3 Paragraf Narasi: UNIKOM -> Data Science -> Client Value */}
+            <div className="space-y-4">
+              <p>{t.p1[language]}</p>
+              <p>{t.p2[language]}</p>
+              <p>{t.p3[language]}</p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#0f1217] border border-white/8">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
-                  <IconBolt size={20} />
+            {/* 3 Pilar Nilai Klien: Web/Android, Data Science, Eksekusi Siap Pakai */}
+            <div className="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+              {/* Pilar 1 */}
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                <div className="w-8 h-8 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-[#FF5E1E] shadow-2xs">
+                  <IconCode size={18} stroke={2} />
                 </div>
-                <h3 className="font-display font-semibold text-white text-base">
-                  Kecepatan Pengiriman (Fast Shipping)
-                </h3>
+                <h4 className="font-display font-bold text-slate-900 text-xs sm:text-sm">
+                  {t.pillars.p1Title[language]}
+                </h4>
+                <p className="text-slate-500 text-[11px] sm:text-xs leading-relaxed">
+                  {t.pillars.p1Desc[language]}
+                </p>
               </div>
-              <p className="text-xs text-zinc-400 leading-relaxed">
-                Membangun antarmuka web dengan cepat tanpa birokrasi arsitektur berlebih, siap dipakai langsung untuk kebutuhan nyata.
-              </p>
-            </div>
 
-            <div className="p-6 rounded-2xl bg-[#0f1217] border border-white/8">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
-                  <IconTerminal size={20} />
+              {/* Pilar 2 */}
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                <div className="w-8 h-8 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-[#FF5E1E] shadow-2xs">
+                  <IconChartBar size={18} stroke={2} />
                 </div>
-                <h3 className="font-display font-semibold text-white text-base">
-                  Fleksibilitas Kolaborasi
-                </h3>
+                <h4 className="font-display font-bold text-slate-900 text-xs sm:text-sm">
+                  {t.pillars.p2Title[language]}
+                </h4>
+                <p className="text-slate-500 text-[11px] sm:text-xs leading-relaxed">
+                  {t.pillars.p2Desc[language]}
+                </p>
               </div>
-              <p className="text-xs text-zinc-400 leading-relaxed">
-                Siap membantu proyek analisis data, pembuatan dashboard interaktif, maupun pengembangan web tools freelance.
-              </p>
+
+              {/* Pilar 3 */}
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                <div className="w-8 h-8 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-[#FF5E1E] shadow-2xs">
+                  <IconCheck size={18} stroke={2.5} />
+                </div>
+                <h4 className="font-display font-bold text-slate-900 text-xs sm:text-sm">
+                  {t.pillars.p3Title[language]}
+                </h4>
+                <p className="text-slate-500 text-[11px] sm:text-xs leading-relaxed">
+                  {t.pillars.p3Desc[language]}
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -81,3 +143,4 @@ export default function AboutNarrative() {
     </section>
   );
 }
+

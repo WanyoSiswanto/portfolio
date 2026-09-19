@@ -1,16 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #08090b;
-  --foreground: #f2f3f5;
-  --surface: #101216;
-  --surface-elevated: #16191f;
-  --surface-border: rgba(255, 255, 255, 0.08);
-  --surface-border-hover: rgba(255, 255, 255, 0.18);
-  --accent-emerald: #10b981;
-  --accent-cyan: #38bdf8;
-  --accent-amber: #f59e0b;
-  --text-muted: #8e95a5;
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --surface: #f8fafc;
+  --surface-elevated: #ffffff;
+  --surface-border: rgba(15, 23, 42, 0.08);
+  --surface-border-hover: rgba(15, 23, 42, 0.16);
+  --accent-orange: #ff5e1e;
+  --accent-orange-hover: #e04a0e;
+  --text-muted: #64748b;
 }
 
 @theme inline {
@@ -18,6 +17,7 @@
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
+  --color-orange-accent: var(--accent-orange);
   --font-sans: var(--font-sans);
   --font-display: var(--font-sans);
   --font-mono: var(--font-mono);
@@ -25,7 +25,9 @@
 
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: light;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(15, 23, 42, 0.25) transparent;
 }
 
 body {
@@ -33,13 +35,12 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
-  selection-background-color: #10b981;
-  selection-color: #08090b;
+  letter-spacing: -0.011em;
 }
 
 ::selection {
-  background-color: #10b981;
-  color: #08090b;
+  background-color: #ff5e1e;
+  color: #ffffff;
 }
 
 /* 3D and Spatial Utilities */
@@ -79,29 +80,10 @@ body {
 .bg-grid-subtle {
   background-size: 48px 48px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
 }
 
-.bg-radial-vignette {
-  background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
-}
-
-/* Smooth custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: #08090b;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 9999px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
-}
+/* Smooth custom scrollbar matching clean light canvas */
+/* Native overlay scrollbar used */
 

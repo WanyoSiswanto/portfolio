@@ -1,18 +1,23 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { IconTerminal2, IconMenu2, IconX } from "@tabler/icons-react";
+import Image from "next/image";
+import { IconMenu2, IconX, IconArrowRight } from "@tabler/icons-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { TRANSLATIONS } from "@/data/translations";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { language, setLanguage } = useLanguage();
+  const t = TRANSLATIONS;
 
   useEffect(() => {
     let ticking = false;
     const onScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          setScrolled(window.scrollY > 30);
+          setScrolled(window.scrollY > 120);
           ticking = false;
         });
         ticking = true;
@@ -23,78 +28,92 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-3 sm:px-4 pt-3 sm:pt-6 transition-all duration-300">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 flex justify-center px-4 sm:px-8 pt-4 transition-all duration-300 ${
+        scrolled
+          ? "opacity-100 translate-y-0 pointer-events-auto"
+          : "opacity-0 -translate-y-6 pointer-events-none"
+      }`}
+    >
       <nav
-        className={`w-full max-w-5xl flex items-center justify-between px-3.5 sm:px-5 py-2.5 sm:py-3 rounded-full border transition-all duration-300 backdrop-blur-xl ${
-          scrolled
-            ? "bg-[#0c0e12]/85 border-white/15 shadow-[0_12px_30px_rgba(0,0,0,0.6)]"
-            : "bg-[#0c0e12]/60 border-white/8"
-        }`}
+        className="w-full max-w-5xl flex items-center justify-between px-5 sm:px-7 py-2.5 rounded-full bg-[#05141c]/90 border border-white/15 shadow-[0_16px_36px_rgba(0,0,0,0.5)] backdrop-blur-xl transition-all duration-300"
         aria-label="Navigasi Utama"
       >
-        {/* Brand / Logo */}
+        {/* Brand / Logo: nyouniverse dengan logo resmi baru */}
         <a
           href="#top"
-          className="flex items-center gap-2 sm:gap-2.5 group text-white hover:text-emerald-400 transition-colors"
+          className="flex items-center gap-2 group text-white font-display font-bold text-base sm:text-lg tracking-tight transition-transform active:scale-98"
         >
-          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-emerald-500/40 group-hover:bg-emerald-500/10 transition-all">
-            <IconTerminal2 size={15} className="text-emerald-400" />
-          </div>
-          <span className="font-mono text-xs sm:text-sm tracking-wider font-semibold uppercase">
-            Wanyo Siswanto<span className="text-emerald-400">.</span>
-          </span>
+          <Image
+            src="/nyouniverse-logo-v2.png"
+            alt="nyouniverse"
+            width={26}
+            height={26}
+            className="rounded-full shadow-sm object-contain"
+          />
+          <span>nyouniverse</span>
         </a>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden md:flex items-center gap-1 bg-white/[0.03] border border-white/[0.05] p-1 rounded-full text-xs font-mono">
-          <a
-            href="#projects"
-            className="px-4 py-1.5 rounded-full text-zinc-400 hover:text-white hover:bg-white/5 transition-colors"
-          >
-            Proyek
+        <div className="hidden md:flex items-center gap-7 text-xs sm:text-sm font-medium text-white/80">
+          <a href="#top" className="hover:text-white transition-colors">
+            {t.nav.home[language]}
           </a>
-          <a
-            href="#skills"
-            className="px-4 py-1.5 rounded-full text-zinc-400 hover:text-white hover:bg-white/5 transition-colors"
-          >
-            Kapabilitas
+          <a href="#about" className="hover:text-white transition-colors">
+            {t.nav.about[language]}
           </a>
-          <a
-            href="#workflow"
-            className="px-4 py-1.5 rounded-full text-zinc-400 hover:text-white hover:bg-white/5 transition-colors"
-          >
-            Alur Kerja
+          <a href="#projects" className="hover:text-white transition-colors">
+            {t.nav.projects[language]}
           </a>
-          <a
-            href="#about"
-            className="px-4 py-1.5 rounded-full text-zinc-400 hover:text-white hover:bg-white/5 transition-colors"
-          >
-            Tentang
+          <a href="#skills" className="hover:text-white transition-colors">
+            {t.nav.skills[language]}
           </a>
         </div>
 
-        {/* Live Status & CTA */}
+        {/* Right Controls: Bilingual Switcher & CTA */}
         <div className="hidden sm:flex items-center gap-4">
-          <div className="flex items-center gap-2 text-[11px] font-mono text-zinc-300 bg-emerald-950/40 border border-emerald-500/20 px-3 py-1.5 rounded-full">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-            </span>
-            <span>Open for Work</span>
+          {/* Language Switcher */}
+          <div className="flex items-center p-0.5 rounded-full bg-white/10 border border-white/15 text-[11px] font-semibold">
+            <button
+              type="button"
+              onClick={() => setLanguage("id")}
+              className={`px-2 py-0.5 rounded-full transition-all cursor-pointer ${
+                language === "id"
+                  ? "bg-[#FF5E1E] text-white shadow-sm"
+                  : "text-white/60 hover:text-white"
+              }`}
+            >
+              ID
+            </button>
+            <button
+              type="button"
+              onClick={() => setLanguage("en")}
+              className={`px-2 py-0.5 rounded-full transition-all cursor-pointer ${
+                language === "en"
+                  ? "bg-[#FF5E1E] text-white shadow-sm"
+                  : "text-white/60 hover:text-white"
+              }`}
+            >
+              EN
+            </button>
           </div>
 
+          {/* Pill CTA Button */}
           <a
             href="#contact"
-            className="text-xs font-medium px-4 py-2 rounded-full bg-white text-black hover:bg-zinc-200 transition-all shadow-[0_2px_12px_rgba(255,255,255,0.15)] active:scale-95"
+            className="inline-flex items-center gap-2.5 pl-4 pr-1.5 py-1.5 rounded-full bg-white text-slate-900 hover:bg-zinc-100 font-semibold text-xs tracking-tight transition-all shadow-md active:scale-95 group"
           >
-            Kontak
+            <span>{t.nav.getInTouch[language]}</span>
+            <span className="w-6 h-6 rounded-full bg-[#FF5E1E] flex items-center justify-center text-white transition-transform duration-200 group-hover:scale-105 group-hover:translate-x-0.5">
+              <IconArrowRight size={13} stroke={2.5} />
+            </span>
           </a>
         </div>
 
         {/* Mobile Hamburger Toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden text-zinc-300 hover:text-white p-1 focus:outline-none"
+          className="md:hidden text-white/90 hover:text-white p-1.5 rounded-lg bg-white/5 border border-white/10 focus:outline-none"
           aria-label="Buka Menu"
         >
           {mobileOpen ? <IconX size={20} /> : <IconMenu2 size={20} />}
@@ -103,46 +122,72 @@ export default function Navbar() {
 
       {/* Mobile Drawer Menu */}
       {mobileOpen && (
-        <div className="md:hidden fixed top-20 left-4 right-4 bg-[#0e1015]/95 border border-white/10 rounded-2xl p-5 backdrop-blur-2xl shadow-2xl flex flex-col gap-4 font-mono text-sm z-50">
+        <div className="md:hidden fixed top-20 left-4 right-4 bg-[#05141c]/95 border border-white/15 rounded-3xl p-6 backdrop-blur-2xl shadow-2xl flex flex-col gap-4 text-sm font-medium z-50 animate-in fade-in zoom-in-95 duration-200">
           <a
-            href="#projects"
+            href="#top"
             onClick={() => setMobileOpen(false)}
-            className="text-zinc-300 hover:text-emerald-400 py-1"
+            className="text-white/80 hover:text-white py-1.5 flex items-center justify-between"
           >
-            01. Proyek Pilihan
-          </a>
-          <a
-            href="#skills"
-            onClick={() => setMobileOpen(false)}
-            className="text-zinc-300 hover:text-emerald-400 py-1"
-          >
-            02. Kapabilitas & Stack
-          </a>
-          <a
-            href="#workflow"
-            onClick={() => setMobileOpen(false)}
-            className="text-zinc-300 hover:text-emerald-400 py-1"
-          >
-            03. Alur Kerja
+            <span>{t.nav.home[language]}</span>
+            <span className="text-[#FF5E1E] text-xs">01</span>
           </a>
           <a
             href="#about"
             onClick={() => setMobileOpen(false)}
-            className="text-zinc-300 hover:text-emerald-400 py-1"
+            className="text-white/80 hover:text-white py-1.5 flex items-center justify-between"
           >
-            04. Tentang Wanyo Siswanto
+            <span>{t.nav.about[language]}</span>
+            <span className="text-[#FF5E1E] text-xs">02</span>
           </a>
+          <a
+            href="#projects"
+            onClick={() => setMobileOpen(false)}
+            className="text-white/80 hover:text-white py-1.5 flex items-center justify-between"
+          >
+            <span>{t.nav.projects[language]}</span>
+            <span className="text-[#FF5E1E] text-xs">03</span>
+          </a>
+          <a
+            href="#skills"
+            onClick={() => setMobileOpen(false)}
+            className="text-white/80 hover:text-white py-1.5 flex items-center justify-between"
+          >
+            <span>{t.nav.skills[language]}</span>
+            <span className="text-[#FF5E1E] text-xs">04</span>
+          </a>
+
           <div className="pt-3 border-t border-white/10 flex items-center justify-between">
-            <span className="text-xs text-emerald-400 flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-              Available
-            </span>
+            {/* Language Switcher in Mobile */}
+            <div className="flex items-center p-0.5 rounded-full bg-white/10 border border-white/15 text-xs font-semibold">
+              <button
+                type="button"
+                onClick={() => setLanguage("id")}
+                className={`px-2.5 py-1 rounded-full transition-all ${
+                  language === "id" ? "bg-[#FF5E1E] text-white" : "text-white/60"
+                }`}
+              >
+                ID
+              </button>
+              <button
+                type="button"
+                onClick={() => setLanguage("en")}
+                className={`px-2.5 py-1 rounded-full transition-all ${
+                  language === "en" ? "bg-[#FF5E1E] text-white" : "text-white/60"
+                }`}
+              >
+                EN
+              </button>
+            </div>
+
             <a
               href="#contact"
               onClick={() => setMobileOpen(false)}
-              className="text-xs font-sans font-medium px-4 py-2 rounded-full bg-white text-black"
+              className="inline-flex items-center gap-2 pl-3.5 pr-1.5 py-1.5 rounded-full bg-white text-slate-900 font-semibold text-xs"
             >
-              Kirim Pesan
+              <span>{t.nav.getInTouch[language]}</span>
+              <span className="w-5 h-5 rounded-full bg-[#FF5E1E] flex items-center justify-center text-white">
+                <IconArrowRight size={11} stroke={2.5} />
+              </span>
             </a>
           </div>
         </div>
@@ -150,3 +195,4 @@ export default function Navbar() {
     </header>
   );
 }
+

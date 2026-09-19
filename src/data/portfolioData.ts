@@ -39,10 +39,10 @@ export const PORTFOLIO_DATA = {
     location: "Indonesia",
     avatar: "/wanyo-profile.jpg",
     shortBio:
-      "Menganalisis data dan membangun aplikasi web fungsional untuk kebutuhan nyata—mulai dari SaaS manajemen cuci sepatu NyoClean (POS, live tracking & direct WA), landing page farmasi modern Nyopharma (arsitektur SaaS-ready), hingga sistem monitoring kalibrasi & validasi industri (CQ System).",
+      "Lulusan Teknik Informatika UNIKOM. Menguasai siklus data science end-to-end (cleaning hingga visualisasi) dan merekayasa aplikasi website, web app produksi, serta aplikasi Android yang menyelesaikan tantangan operasional bisnis riil.",
     detailedBio: [
-      "Saya mendalami dunia data analytics untuk mengekstrak insight berharga, memodelkan tren bisnis, dan menjaga integritas data operasional.",
-      "Sebagai developer pragmatis (vibe coding), saya mengeksekusi kebutuhan bisnis riil menjadi aplikasi web fungsional: mulai dari platform SaaS manajemen workshop sepatu NyoClean (lengkap dengan POS counter, live tracking, struk thermal, & WhatsApp automation), landing page profesional farmasi Nyopharma (arsitektur SaaS-ready), hingga sistem web industri CQ System untuk otomasi program tahunan kalibrasi, pelacakan realisasi, dan database validasi.",
+      "Lulusan Teknik Informatika dari Universitas Komputer Indonesia (UNIKOM) dengan fondasi kuat dalam rekayasa perangkat lunak, algoritma data, dan pengembangan aplikasi website, web app kompleks, hingga mobile Android.",
+      "Sebagai data scientist dan developer pragmatis, saya mengolah siklus data lengkap dari data cleaning, pemodelan statistik, hingga visualisasi data interaktif, kemudian menjembataninya menjadi aplikasi digital nyata: mulai dari SaaS kasir NyoClean (POS, live tracking & WA automation), sistem klinik gigi spesialis Arsy Dentalcare (booking online & panduan ramah trauma), arsitektur SaaS farmasi Nyopharma, hingga sistem web monitoring kepatuhan CQ System.",
     ],
     contact: {
       email: "nyouniverseofficial@gmail.com",
@@ -90,6 +90,42 @@ export const PORTFOLIO_DATA = {
       demoUrl: "https://nyoclean.vercel.app/",
       githubUrl: "https://github.com/WanyoSiswanto/Saas-CuciSepatu",
       accentColor: "#2563EB",
+    },
+    {
+      id: "arsy-dentalcare",
+      title: "Arsy Dentalcare : Klinik Gigi Anak Modern",
+      subtitle: "Platform Edukasi, Layanan & Reservasi Janji Temu Spesialis Kedokteran Gigi Anak (Sp.KGA)",
+      category: "Web App",
+      featured: true,
+      statusBadge: "Live Pediatric Clinic",
+      image: "/arsy-dentalcare-real-thumb.jpg",
+      description:
+        "Website resmi dan sistem reservasi interaktif untuk klinik spesialis kedokteran gigi anak (Sp.KGA) modern. Dirancang dengan atmosfer ramah anak untuk menghapus stigma ketakutan ke dokter gigi (atraumatic dental care), modul reservasi janji temu online dokter gigi anak, panduan kunjungan pertama interaktif (Tell-Show-Do), serta katalog komprehensif perawatan preventif hingga restoratif gigi buah hati.",
+      problemSolved:
+        "Mengikis rasa takut dan kecemasan anak (dental anxiety) lewat pendekatan atraumatik Tell-Show-Do dan edukasi visual ramah anak, sekaligus mempermudah orang tua melakukan reservasi janji temu dokter spesialis (Sp.KGA) secara instan tanpa antrean manual.",
+      metrics: [
+        { label: "Rating Kepuasan", value: "4.9 / 5.0" },
+        { label: "Pasien Ceria", value: "1.500+ Anak" },
+        { label: "Tenaga Medis", value: "Spesialis Sp.KGA" },
+      ],
+      tags: [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Pediatric Dental",
+        "Online Appointment",
+        "Tell-Show-Do",
+        "Healthcare UI",
+        "Vercel",
+      ],
+      features: [
+        "Reservasi Janji Temu Online (/appointment): Form interaktif booking jadwal dokter spesialis gigi anak (Sp.KGA) dan pilihan keluhan perawatan",
+        "Katalog Layanan Komprehensif: Pemeriksaan berkala, aplikasi Fluoride Varnish, Dental Sealant, tambal gigi susu, hingga perawatan saraf gigi (pulpotomi)",
+        "Pendekatan Ramah Trauma (Tell-Show-Do): Panduan Kunjungan Pertama (/first-visit) interaktif untuk membiasakan mental anak sebelum tindakan klinis",
+        "Profil Tim Dokter & Transparansi: Jadwal praktik pedodontis resmi, galeri hasil perawatan Before/After, serta ulasan orang tua terverifikasi",
+      ],
+      demoUrl: "https://arsy-dentalcare.vercel.app/",
+      accentColor: "#1677B8",
     },
     {
       id: "nyopharma",
@@ -146,13 +182,18 @@ export const PORTFOLIO_DATA = {
       demoUrl: "https://cq-weld.vercel.app/login",
       accentColor: "#38BDF8",
     },
+  ] as Project[],
+
+  // Disimpan sementara agar mudah diaktifkan kembali jika dibutuhkan di masa mendatang
+  archivedProjects: [
     {
       id: "pharma-inventory-intelligence",
       title: "Pharma Inventory Intelligence",
       subtitle: "Model Analisis Prediksi Stok Obat & Pola Permintaan Farmasi",
       category: "Data Analytics",
-      featured: false,
+      featured: true,
       statusBadge: "Analytics Lab",
+      image: "/pharma-analytics-thumb.jpg",
       description:
         "Eksplorasi data transaksi dan tren resep obat untuk memprediksi kebutuhan stok kritis (antibiotik, vitamin musiman, obat kronis) guna menghindari kekosongan obat.",
       problemSolved:
@@ -175,8 +216,9 @@ export const PORTFOLIO_DATA = {
       title: "CDOB Delivery & Feed Monitor",
       subtitle: "Web Tool Pemantau Distribusi Obat & Integritas Data Harga",
       category: "Automation",
-      featured: false,
+      featured: true,
       statusBadge: "Automation Tool",
+      image: "/cdob-delivery-thumb.jpg",
       description:
         "Mini web tool untuk memantau status pengiriman obat terjaga suhu 22°C serta sinkronisasi katalog harga obat eceran tertinggi (HET) secara berkala.",
       problemSolved:

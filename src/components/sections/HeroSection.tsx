@@ -1,212 +1,224 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import {
-  IconArrowUpRight,
-  IconChevronDown,
-  IconBrandGithub,
-  IconBrandLinkedin,
-  IconMail,
-  IconPill,
-  IconAdjustmentsHorizontal,
-  IconDatabase,
-  IconSparkles,
-} from "@tabler/icons-react";
+import { IconArrowRight, IconMenu2, IconX } from "@tabler/icons-react";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
+import { useLanguage } from "@/context/LanguageContext";
+import { TRANSLATIONS } from "@/data/translations";
 
 export default function HeroSection() {
   const { profile } = PORTFOLIO_DATA;
+  const { language, setLanguage } = useLanguage();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const t = TRANSLATIONS;
 
   return (
     <section
       id="top"
-      className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-[#090b0e]"
+      className="relative w-full min-h-[640px] sm:min-h-[760px] md:min-h-[820px] lg:min-h-[880px] rounded-b-[40px] sm:rounded-b-[56px] lg:rounded-b-[72px] overflow-hidden bg-[#05141c] flex flex-col justify-between shadow-[0_20px_50px_rgba(0,0,0,0.12)] text-white select-none"
     >
-      {/* Gentle background glow - mobile GPU optimized */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-[radial-gradient(ellipse_at_center,_rgba(16,185,129,0.06)_0%,_transparent_75%)] pointer-events-none" />
+      {/* Full-bleed seamless studio portrait background: foto menyatu utuh dengan background tanpa kotak / bingkai */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <Image
+          src="/hero-portrait-seamless.jpg"
+          alt={profile.name}
+          fill
+          priority
+          quality={95}
+          className="object-cover object-[center_28%] sm:object-[center_24%] md:object-[center_22%]"
+        />
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-8 relative z-10">
-        {/* Status Pill */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/40 border border-emerald-500/20 text-emerald-400 font-mono text-xs mb-8">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span>Tersedia untuk Proyek Web &amp; Analisis Data</span>
-        </div>
+        {/* Vignette halus atas untuk keterbacaan navbar */}
+        <div className="absolute inset-x-0 top-0 h-36 sm:h-44 bg-gradient-to-b from-[#05141c]/70 via-[#05141c]/25 to-transparent" />
 
-        {/* Main Hero Card: Clean, Proportional Profile & Identity */}
-        <div className="p-5 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl bg-[#0e1217] border border-white/8 shadow-2xl mb-10">
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-8 mb-8">
-            {/* Real User Photo */}
-            <div className="relative shrink-0">
-              <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border border-white/15 bg-zinc-900 shadow-xl">
-                <Image
-                  src={profile.avatar || "/wanyo-profile.jpg"}
-                  alt={`${profile.name} - Data Analyst & Web Developer`}
-                  width={128}
-                  height={128}
-                  priority
-                  className="w-full h-full object-cover object-center"
-                />
-              </div>
-              <span className="absolute -bottom-2 -right-2 px-2 py-0.5 rounded-md bg-black/90 border border-white/10 font-mono text-[10px] text-emerald-400 font-semibold">
-                ACTIVE
-              </span>
-            </div>
+        {/* Vignette gelap atmosferik bawah agar teks About & deskripsi kontras tinggi dan mudah dibaca */}
+        <div className="absolute inset-x-0 bottom-0 h-80 sm:h-96 md:h-[420px] bg-gradient-to-t from-[#040e15] via-[#040e15]/80 to-transparent" />
 
-            {/* Profile Intro & Title */}
-            <div className="space-y-2">
-              <div className="text-zinc-400 font-mono text-xs uppercase tracking-wider">
-                Halo, saya
-              </div>
-              <h1 className="font-display text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-                {profile.name}
-              </h1>
-              <p className="font-sans text-lg sm:text-xl text-emerald-400 font-medium">
-                {profile.role}
-              </p>
-              <p className="text-sm text-zinc-400 max-w-xl leading-relaxed">
-                Menganalisis data bisnis dan mengeksekusi kebutuhan operasional menjadi aplikasi web nyata yang fungsional dan siap pakai.
-              </p>
-            </div>
-          </div>
+        {/* Vignette lembut kiri & kanan */}
+        <div className="absolute inset-y-0 left-0 w-24 sm:w-40 bg-gradient-to-r from-[#05141c]/40 via-transparent to-transparent" />
+        <div className="absolute inset-y-0 right-0 w-24 sm:w-40 bg-gradient-to-l from-[#05141c]/40 via-transparent to-transparent" />
+      </div>
 
-          {/* Quick Biodata Badges */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 rounded-2xl bg-white/[0.02] border border-white/5 font-sans text-xs mb-8">
-            <div className="flex items-center gap-2.5">
-              <span className="w-2 h-2 rounded-full bg-cyan-400" />
-              <div>
-                <div className="text-zinc-500 font-mono text-[10px]">DOMISILI</div>
-                <div className="text-zinc-200 font-medium">{profile.location} (Remote)</div>
-              </div>
-            </div>
-            <div className="flex items-center gap-2.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-400" />
-              <div>
-                <div className="text-zinc-500 font-mono text-[10px]">DOMAIN UTAMA</div>
-                <div className="text-zinc-200 font-medium">SaaS Apps • Health Tech • CQV</div>
-              </div>
-            </div>
-            <div className="flex items-center gap-2.5">
-              <span className="w-2 h-2 rounded-full bg-amber-400" />
-              <div>
-                <div className="text-zinc-500 font-mono text-[10px]">CORE STACK</div>
-                <div className="text-zinc-200 font-medium">Next.js • React • Python • SQL</div>
-              </div>
-            </div>
-          </div>
+      {/* Top Navigation Bar: Terletak di dalam kartu hero persis gambar referensi */}
+      <header className="relative z-20 w-full pt-6 sm:pt-8 md:pt-10 px-6 sm:px-8 md:px-10 lg:px-12 flex items-center justify-between">
+        {/* Logo Brand: nyouniverse dengan logo resmi baru */}
+        <a
+          href="#top"
+          className="flex items-center gap-2.5 group text-white font-display font-bold text-xl sm:text-2xl tracking-tight transition-transform active:scale-98"
+        >
+          <Image
+            src="/nyouniverse-logo-v2.png"
+            alt="nyouniverse"
+            width={32}
+            height={32}
+            className="rounded-full shadow-md object-contain"
+            priority
+          />
+          <span>nyouniverse</span>
+        </a>
 
-          {/* Action Buttons & Social Channels */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-6 border-t border-white/8">
-            <div className="flex flex-wrap items-center gap-3">
-              <a
-                href="#projects"
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-white text-black hover:bg-zinc-200 font-semibold text-xs sm:text-sm transition-all active:scale-98 shadow-sm"
-              >
-                <span>Lihat Karya Nyata</span>
-                <IconArrowUpRight size={16} />
+          {/* Desktop Nav Links, Language Toggle & Pill Button */}
+          <div className="hidden md:flex items-center gap-7 lg:gap-10">
+            <nav className="flex items-center gap-7 lg:gap-9 text-sm lg:text-[15px] font-medium text-white/85">
+              <a href="#top" className="hover:text-white transition-colors">
+                {t.nav.home[language]}
               </a>
+              <a href="#about" className="hover:text-white transition-colors">
+                {t.nav.about[language]}
+              </a>
+              <a href="#projects" className="hover:text-white transition-colors">
+                {t.nav.projects[language]}
+              </a>
+            </nav>
 
+            {/* Bilingual Language Switcher Toggle */}
+            <div className="flex items-center p-0.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-xs font-semibold">
+              <button
+                type="button"
+                onClick={() => setLanguage("id")}
+                aria-label="Pilih Bahasa Indonesia"
+                className={`px-2.5 py-1 rounded-full transition-all cursor-pointer ${
+                  language === "id"
+                    ? "bg-[#FF5E1E] text-white shadow-sm"
+                    : "text-white/60 hover:text-white"
+                }`}
+              >
+                ID
+              </button>
+              <button
+                type="button"
+                onClick={() => setLanguage("en")}
+                aria-label="Select English Language"
+                className={`px-2.5 py-1 rounded-full transition-all cursor-pointer ${
+                  language === "en"
+                    ? "bg-[#FF5E1E] text-white shadow-sm"
+                    : "text-white/60 hover:text-white"
+                }`}
+              >
+                EN
+              </button>
+            </div>
+
+            {/* Pill CTA: Get in touch dengan arrow button oranye */}
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-3 pl-5 pr-2 py-2 rounded-full bg-white text-slate-900 hover:bg-slate-50 font-semibold text-xs sm:text-sm tracking-tight transition-all shadow-md active:scale-95 group"
+            >
+              <span>{t.nav.getInTouch[language]}</span>
+              <span className="w-7 h-7 rounded-full bg-[#FF5E1E] flex items-center justify-center text-white transition-transform duration-200 group-hover:scale-105 group-hover:translate-x-0.5 shadow-sm">
+                <IconArrowRight size={15} stroke={2.5} />
+              </span>
+            </a>
+          </div>
+
+          {/* Mobile Right: Language Switcher & Hamburger */}
+          <div className="md:hidden flex items-center gap-2.5">
+            <div className="flex items-center p-0.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-[11px] font-semibold">
+              <button
+                type="button"
+                onClick={() => setLanguage("id")}
+                className={`px-2 py-0.5 rounded-full transition-all ${
+                  language === "id" ? "bg-[#FF5E1E] text-white" : "text-white/60"
+                }`}
+              >
+                ID
+              </button>
+              <button
+                type="button"
+                onClick={() => setLanguage("en")}
+                className={`px-2 py-0.5 rounded-full transition-all ${
+                  language === "en" ? "bg-[#FF5E1E] text-white" : "text-white/60"
+                }`}
+              >
+                EN
+              </button>
+            </div>
+
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="text-white p-2 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 cursor-pointer"
+              aria-label="Toggle Menu"
+            >
+              {mobileMenuOpen ? <IconX size={20} /> : <IconMenu2 size={20} />}
+            </button>
+          </div>
+        </header>
+
+        {/* Mobile Dropdown Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden relative z-30 mx-6 mt-4 p-5 rounded-3xl bg-[#061924]/95 backdrop-blur-xl border border-white/15 shadow-2xl flex flex-col gap-4 text-sm font-medium animate-in fade-in zoom-in-95 duration-200">
+            <a
+              href="#top"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-white/90 hover:text-white py-1"
+            >
+              {t.nav.home[language]}
+            </a>
+            <a
+              href="#about"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-white/90 hover:text-white py-1"
+            >
+              {t.nav.about[language]}
+            </a>
+            <a
+              href="#projects"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-white/90 hover:text-white py-1"
+            >
+              {t.nav.projects[language]}
+            </a>
+            <a
+              href="#skills"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-white/90 hover:text-white py-1"
+            >
+              {t.nav.skills[language]}
+            </a>
+            <div className="pt-3 border-t border-white/10">
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium text-xs sm:text-sm transition-all"
+                onClick={() => setMobileMenuOpen(false)}
+                className="inline-flex items-center justify-between w-full pl-5 pr-2 py-2 rounded-full bg-white text-slate-950 font-semibold text-xs"
               >
-                <span>Hubungi Saya</span>
+                <span>{t.nav.getInTouch[language]}</span>
+                <span className="w-6 h-6 rounded-full bg-[#FF5E1E] flex items-center justify-center text-white">
+                  <IconArrowRight size={13} stroke={2.5} />
+                </span>
               </a>
             </div>
+          </div>
+        )}
 
-            {/* Social Icons */}
-            <div className="flex items-center gap-2 text-zinc-400 self-end sm:self-auto">
-              <a
-                href={profile.contact.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-lg bg-white/5 hover:bg-white/10 hover:text-cyan-400 transition-colors"
-                title="LinkedIn"
-              >
-                <IconBrandLinkedin size={18} />
-              </a>
-              <a
-                href={profile.contact.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-lg bg-white/5 hover:bg-white/10 hover:text-white transition-colors"
-                title="GitHub"
-              >
-                <IconBrandGithub size={18} />
-              </a>
-              <a
-                href={`mailto:${profile.contact.email}`}
-                className="p-2 rounded-lg bg-white/5 hover:bg-white/10 hover:text-white transition-colors"
-                title="Email"
-              >
-                <IconMail size={18} />
-              </a>
+        {/* Spacer fleksibel agar konten bawah selalu berada di bagian bawah */}
+        <div className="flex-1" />
+
+        {/* Bottom Row: Penempatan persis gambar referensi */}
+        <div className="relative z-20 w-full px-6 sm:px-8 md:px-10 lg:px-12 pb-8 sm:pb-12 md:pb-14 lg:pb-16 flex flex-col md:flex-row md:items-end justify-between gap-8 sm:gap-10">
+          {/* Kolom Kiri: Label oranye Data Analyst & Web Developer + Judul masif About */}
+          <div className="space-y-1 shrink-0">
+            <div className="text-[#FF5E1E] font-semibold text-sm sm:text-base lg:text-lg tracking-wide">
+              {t.hero.roleTag[language]}
             </div>
+            <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-[104px] font-extrabold text-white tracking-[-0.04em] leading-none">
+              {t.hero.aboutHeading[language]}
+            </h1>
+          </div>
+
+          {/* Kolom Kanan: Sosok di Balik Solusi Digital / The Mind Behind Digital Solutions */}
+          <div className="max-w-xs sm:max-w-sm lg:max-w-md space-y-1.5 md:pb-3 text-left">
+            <h2 className="text-white font-bold text-lg sm:text-xl lg:text-2xl tracking-tight">
+              {t.hero.personHeading[language]}
+            </h2>
+            <p className="text-white/60 text-xs sm:text-sm lg:text-base leading-relaxed">
+              {t.hero.personSub[language]}
+            </p>
           </div>
         </div>
-
-        {/* 4-Pillar Quick Summary */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="p-5 rounded-2xl bg-[#0c0f14] border border-blue-500/20 hover:border-blue-500/40 transition-colors flex items-start gap-3.5">
-            <div className="p-2.5 rounded-xl bg-blue-500/10 text-blue-400 shrink-0">
-              <IconSparkles size={20} />
-            </div>
-            <div>
-              <div className="text-white font-semibold text-sm">NyoClean SaaS</div>
-              <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
-                Platform kasir POS workshop sepatu, struk thermal, live tracking &amp; integrasi WhatsApp.
-              </p>
-            </div>
-          </div>
-
-          <div className="p-5 rounded-2xl bg-[#0c0f14] border border-white/6 hover:border-teal-500/30 transition-colors flex items-start gap-3.5">
-            <div className="p-2.5 rounded-xl bg-teal-500/10 text-teal-400 shrink-0">
-              <IconPill size={20} />
-            </div>
-            <div>
-              <div className="text-white font-semibold text-sm">Nyopharma</div>
-              <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
-                Landing page apotek modern (SaaS-ready) dengan alur tebus resep digital &amp; katalog obat.
-              </p>
-            </div>
-          </div>
-
-          <div className="p-5 rounded-2xl bg-[#0c0f14] border border-white/6 hover:border-cyan-500/30 transition-colors flex items-start gap-3.5">
-            <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 shrink-0">
-              <IconAdjustmentsHorizontal size={20} />
-            </div>
-            <div>
-              <div className="text-white font-semibold text-sm">CQ System</div>
-              <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
-                Monitoring kalibrasi &amp; validasi: program tahunan otomatis, realisasi, dan database terpusat.
-              </p>
-            </div>
-          </div>
-
-          <div className="p-5 rounded-2xl bg-[#0c0f14] border border-white/6 hover:border-emerald-500/30 transition-colors flex items-start gap-3.5">
-            <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 shrink-0">
-              <IconDatabase size={20} />
-            </div>
-            <div>
-              <div className="text-white font-semibold text-sm">Analisis Data</div>
-              <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
-                Eksplorasi tren stok, mitigasi stockout, dan integritas data operasional bisnis.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="mt-14 flex justify-center">
-          <a
-            href="#projects"
-            className="flex items-center gap-2 text-zinc-500 hover:text-zinc-300 font-mono text-xs transition-colors"
-          >
-            <span>JELAJAHI GALERI PROYEK</span>
-            <IconChevronDown size={14} className="animate-bounce" />
-          </a>
-        </div>
-      </div>
-    </section>
+      </section>
   );
 }
+
+
+

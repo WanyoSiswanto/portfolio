@@ -15,14 +15,16 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Wanyo Siswanto | Data Analyst & Web Developer — Galeri Karya",
-  description: "Galeri portofolio resmi Wanyo Siswanto: Data Analyst & Web Developer. Menampilkan karya web nyata seperti platform apotek digital Nyopharma, sistem kepatuhan kalibrasi/validasi (CQ System), dan analitik data.",
+  title: "Wanyo Siswanto | Data Analyst & Web Developer - Galeri Karya",
+  description: "Galeri portofolio resmi Wanyo Siswanto: Data Analyst & Web Developer. Menampilkan karya web nyata seperti platform SaaS NyoClean, website klinik spesialis gigi anak Arsy Dentalcare, platform apotek digital Nyopharma, sistem validasi industri (CQ System), dan analitik data.",
   keywords: [
     "Wanyo Siswanto",
     "Wanyo",
     "Data Analyst",
     "Web Developer",
     "NyoClean",
+    "Arsy Dentalcare",
+    "Klinik Gigi Anak",
     "Nyopharma",
     "CQ System",
     "Next.js",
@@ -42,6 +44,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { LanguageProvider } from "@/context/LanguageContext";
+
 export default function RootLayout({
   children,
 }: {
@@ -52,8 +56,8 @@ export default function RootLayout({
       lang="id"
       className={`${plusJakartaSans.variable} ${jetbrainsMono.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col bg-[#08090B] text-[#F2F3F5] font-sans">
-        {children}
+      <body className="min-h-full flex flex-col bg-white text-[#0F172A] font-sans antialiased selection:bg-[#FF5E1E] selection:text-white">
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );
