@@ -21,11 +21,10 @@ export default function HeroSection() {
       {/* Full-bleed seamless studio portrait background: foto menyatu utuh dengan background tanpa kotak / bingkai */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <Image
-          src="/hero-portrait-seamless.jpg"
+          src="/hero-portrait-authentic.jpg"
           alt={profile.name}
           fill
           priority
-          quality={95}
           className="object-cover object-[center_30%] sm:object-[center_26%] md:object-[center_24%]"
         />
 
